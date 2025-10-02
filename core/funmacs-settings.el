@@ -1,4 +1,4 @@
-;;; funmacs-settings.el --- Minimal core settings for Funmacs -*- lexical-binding: t; -*-
+;;; funmacs-settings.el --- Funmacs settings -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 ;; Basic settings: disable bell sound and enable line numbers.
