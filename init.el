@@ -10,6 +10,7 @@
 ;; Core
 (require 'funmacs-packages)
 (require 'funmacs-use-package)
+(require 'funmacs-settings)
 (require 'funmacs-backup)
 (require 'funmacs-theme)
 (require 'funmacs-git)
