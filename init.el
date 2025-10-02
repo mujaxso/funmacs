@@ -59,6 +59,7 @@
 (require 'funmacs-vue)
 (require 'funmacs-svelte)
 (require 'funmacs-tailwind)
+(require 'funmacs-markdown)
 
 (message "✅ Funmacs full config loaded!")
 (provide 'funmacs-init)
@@ -70,10 +71,10 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    '(apheleia cape corfu doom-modeline embark-consult lsp-tailwindcss
-	      magit modus-themes nerd-icons-completion
-	      nerd-icons-corfu nerd-icons-dired nix-mode orderless
-	      svelte-mode tempel tempel-collection vertico vue-mode
-	      vundo)))
+	      magit markdown-preview-mode modus-themes
+	      nerd-icons-completion nerd-icons-corfu nerd-icons-dired
+	      nix-mode orderless svelte-mode tempel tempel-collection
+	      vertico vue-mode vundo)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
