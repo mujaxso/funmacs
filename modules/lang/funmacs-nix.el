@@ -1,4 +1,15 @@
 ;;; funmacs-nix.el -*- lexical-binding: t; -*-
-(use-package nix-mode :ensure t :mode ("\\.nix\\'" . nix-mode))
+
+;;; Commentary:
+;; nix-mode settings
+
+;;; code
+
+(use-package nix-mode
+  :ensure t
+  :mode ("\\.nix\\'" . nix-mode))
 (add-hook 'nix-mode-hook #'eglot-ensure)
+
 (provide 'funmacs-nix)
+
+;;; funmacs-nix.el ends here

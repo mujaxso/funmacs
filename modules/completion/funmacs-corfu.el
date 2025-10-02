@@ -1,3 +1,13 @@
 ;;; funmacs-corfu.el -*- lexical-binding: t; -*-
-(use-package corfu :init (global-corfu-mode))
+
+;;; Commentary:
+;; corfu completion ui
+
+;;; code
+
+(use-package corfu
+  :init (global-corfu-mode))
+
 (provide 'funmacs-corfu)
+
+;;; funmacs-corfu.el ends here

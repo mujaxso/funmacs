@@ -1,4 +1,10 @@
 ;;; funmacs-treesitter.el -*- lexical-binding: t; -*-
+
+;;; Commentary:
+;; tree-sitter settings
+
+;;; code
+
 (setq treesit-language-source-alist
       '((c . ("https://github.com/tree-sitter/tree-sitter-c"))
         (cpp . ("https://github.com/tree-sitter/tree-sitter-cpp"))
@@ -12,6 +18,7 @@
         (go . ("https://github.com/tree-sitter/tree-sitter-go"))
         (rust . ("https://github.com/tree-sitter/tree-sitter-rust"))
         (nix . ("https://github.com/nix-community/tree-sitter-nix"))))
+
 (defun funmacs--compiler-available-p () (or (executable-find "gcc") (executable-find "clang") (executable-find "cc")))
 (defun funmacs-install-missing-grammars ()
   (interactive)
@@ -33,4 +40,7 @@
         (html-mode . html-ts-mode)
         (go-mode . go-ts-mode)
         (rust-mode . rust-ts-mode)))
+
 (provide 'funmacs-treesitter)
+
+;;; funmacs-treesitter.el ends here

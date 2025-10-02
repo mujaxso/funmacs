@@ -1,3 +1,14 @@
 ;;; funmacs-git.el --- magit -*- lexical-binding: t; -*-
-(use-package magit :defer t :commands (magit-status magit-log))
+
+;;; Commentary:
+;; magit as git ui.
+
+;;; Code:
+
+(use-package magit
+  :defer t
+  :commands (magit-status magit-log))
+
 (provide 'funmacs-git)
+
+;;; funmacs-git.el ends here

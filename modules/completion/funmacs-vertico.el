@@ -1,3 +1,13 @@
 ;;; funmacs-vertico.el -*- lexical-binding: t; -*-
-(use-package vertico :init (vertico-mode 1))
+
+;;; Commentary:
+;; vertico
+
+;;; code
+
+(use-package vertico
+  :init (vertico-mode 1))
+
 (provide 'funmacs-vertico)
+
+;;; funmacs-vertico.el ends here

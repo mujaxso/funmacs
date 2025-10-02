@@ -57,6 +57,7 @@ var/
 url/
 multisession/
 tree-sitter/
+tmp/
 
 session.*
 forge-database.sqlite
