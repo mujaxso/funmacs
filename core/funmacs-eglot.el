@@ -1,15 +1,12 @@
-;;; funmacs-eglot.el -*- lexical-binding: t; -*-
+;;; funmacs-eglot-mod.el -*- lexical-binding: t; -*-
 
 ;;; Commentary:
-;; built in lsp client
+;; eglot settings
 
-;;;code
+;;; code
 
 (use-package eglot
-  :defer t
-  :config
-  (unless (or (executable-find "clangd") (executable-find "ccls"))
-    (message "[Funmacs] Warning: clangd/ccls not found - C/C++ LSP will not start.")))
+  :defer t)
 
 (provide 'funmacs-eglot)
 

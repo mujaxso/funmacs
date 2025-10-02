@@ -11,6 +11,7 @@
 (require 'funmacs-packages)
 (require 'funmacs-use-package)
 (require 'funmacs-settings)
+(require 'funmacs-emacs)
 (require 'funmacs-backup)
 (require 'funmacs-theme)
 (require 'funmacs-git)
@@ -23,12 +24,23 @@
 ;; UI
 (add-to-list 'load-path (expand-file-name "ui" funmacs-modules-dir))
 (require 'funmacs-modeline)
+(require 'funmacs-nerd-icons)
 
 ;; Completion
 (add-to-list 'load-path (expand-file-name "completion" funmacs-modules-dir))
+(require 'funmacs-format)
+
+;; Vertico comletion
+(add-to-list 'load-path (expand-file-name "completion/vertico" funmacs-modules-dir))
 (require 'funmacs-vertico)
-(require 'funmacs-corfu)
+(require 'funmacs-orderless)
 (require 'funmacs-embark)
+
+;; Corfu completion
+(add-to-list 'load-path (expand-file-name "completion/corfu" funmacs-modules-dir))
+(require 'funmacs-corfu)
+(require 'funmacs-cape)
+(require 'funmacs-tempel)
 
 ;; Lang modules
 (add-to-list 'load-path (expand-file-name "lang" funmacs-modules-dir))
@@ -57,8 +69,11 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(apheleia corfu doom-modeline embark-consult lsp-tailwindcss magit
-	      modus-themes nix-mode svelte-mode vertico vue-mode vundo)))
+   '(apheleia cape corfu doom-modeline embark-consult lsp-tailwindcss
+	      magit modus-themes nerd-icons-completion
+	      nerd-icons-corfu nerd-icons-dired nix-mode orderless
+	      svelte-mode tempel tempel-collection vertico vue-mode
+	      vundo)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
