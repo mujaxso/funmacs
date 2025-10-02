@@ -8,7 +8,8 @@
 ;; Disable bell sound
 (setq ring-bell-function 'ignore)
 
-;; Enable global line numbers
+;; Enable relative line numbers
+(setq display-line-numbers-type 'relative)
 (global-display-line-numbers-mode t)
 
 (provide 'funmacs-settings)

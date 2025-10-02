@@ -9,6 +9,7 @@
   :ensure t
   :mode ("\\.vue\\'" . vue-mode))
 (add-hook 'vue-mode-hook #'eglot-ensure)
+(declare-function sgml-indent-line "sgml-mode")
 
 (provide 'funmacs-vue)
 
