@@ -1,0 +1,63 @@
+# Compiled
+*.elc
+*.lib
+*.fas
+*.dat
+*.eld
+
+# Packaging
+.cask
+
+# Backup files
+*~
+*~
+*.*~
+\#*
+.\#*
+.local/
+.extension/
+*.cache*
+*.log
+*.db
+/modules/private
+test/.local*/
+test/result
+.lsp-session-v1
+package-quickstart.el
+ido.last
+
+straight
+recentf
+transient
+eshell
+history
+projects
+bookmarks
+
+# Undo-tree save-files
+*.~undo-tree
+
+# emacs tempfiles that shouldn't be there
+.dap-breakpoints
+.org-id-locations
+.tern-port
+.yas-compiled-snippets.el
+*.html
+auto-save-list/
+cask/
+ede-projects.el
+elpa/
+eln-cache/
+network-security.data
+semanticdb
+server/
+smex-items
+tramp
+var/
+url/
+multisession/
+tree-sitter/
+
+session.*
+forge-database.sqlite
+*.sqliteforge-database.sqlite
