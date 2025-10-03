@@ -62,3 +62,4 @@ tmp/
 session.*
 forge-database.sqlite
 *.sqliteforge-database.sqlite
+.aider*

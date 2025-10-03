@@ -26,6 +26,10 @@
 (require 'funmacs-modeline)
 (require 'funmacs-nerd-icons)
 
+;; AI
+(add-to-list 'load-path (expand-file-name "ai" funmacs-modules-dir))
+(require 'funmacs-aidermacs)
+
 ;; Completion
 (add-to-list 'load-path (expand-file-name "completion" funmacs-modules-dir))
 (require 'funmacs-format)
@@ -69,7 +73,12 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages nil))
+ '(package-selected-packages
+   '(aidermacs apheleia cape corfu doom-modeline embark-consult
+	       lsp-tailwindcss magit markdown-preview-mode
+	       modus-themes nerd-icons-completion nerd-icons-corfu
+	       nerd-icons-dired nix-mode orderless svelte-mode
+	       tempel-collection vertico vue-mode vundo)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

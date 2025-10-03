@@ -8,9 +8,13 @@
 ;; Disable bell sound
 (setq ring-bell-function 'ignore)
 
-;; Enable relative line numbers
-(setq display-line-numbers-type 'relative)
-(global-display-line-numbers-mode t)
+;; Enable relative line numbers in programming modes only
+(defun funmacs-enable-line-numbers ()
+  "Enable relative line numbers for programming modes."
+  (setq display-line-numbers-type 'relative)
+  (display-line-numbers-mode 1))
+
+(add-hook 'prog-mode-hook #'funmacs-enable-line-numbers)
 
 (provide 'funmacs-settings)
 ;;; funmacs-settings.el ends here
