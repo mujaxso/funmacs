@@ -20,6 +20,8 @@
 (require 'funmacs-whichkey)
 (require 'funmacs-vundo)
 (require 'funmacs-eglot)
+;;(require 'funmacs-eat)
+(require 'funmacs-vterm)
 
 ;; UI
 (add-to-list 'load-path (expand-file-name "ui" funmacs-modules-dir))
@@ -74,11 +76,11 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(aidermacs apheleia cape corfu doom-modeline embark-consult
+   '(aidermacs apheleia cape corfu doom-modeline eat embark-consult
 	       lsp-tailwindcss magit markdown-preview-mode
 	       modus-themes nerd-icons-completion nerd-icons-corfu
 	       nerd-icons-dired nix-mode orderless svelte-mode
-	       tempel-collection vertico vue-mode vundo)))
+	       tempel-collection vertico vterm vue-mode vundo)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

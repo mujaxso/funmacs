@@ -19,14 +19,14 @@
 (use-package aidermacs
   :ensure t
   :commands (aidermacs-chat)
+  :bind (("C-c a" . aidermacs-transient-menu))
   :config
   ;; Default provider DeepSeek
   (setq aidermacs-default-provider 'deepseek)
 
-  ;; Use a supported DeepSeek model
   ;; Common options: deepseek/deepseek-chat, deepseek/deepseek-coder
-  ;; Default model (DeepSeek)
-  (setq aidermacs-default-model "deepseek/deepseek-chat"
+  ;; Default model (OpenRouter)
+  (setq aidermacs-default-model "openrouter/deepseek/deepseek-r1:free"
         aidermacs-auto-commits nil
         aidermacs-use-git t)
   
@@ -35,7 +35,8 @@
         `((gemini    . ,(getenv "GEMINI_API_KEY"))
           (deepseek  . ,(getenv "DEEPSEEK_API_KEY"))
           (openai    . ,(getenv "OPENAI_API_KEY"))
-          (anthropic . ,(getenv "ANTHROPIC_API_KEY"))))
+          (anthropic . ,(getenv "ANTHROPIC_API_KEY"))
+	  (openrouter . ,(getenv "OPENROUTER_API_KEY"))))
 
   ;; ;; Extra args to skip warnings
   ;; (setq aidermacs-extra-args
