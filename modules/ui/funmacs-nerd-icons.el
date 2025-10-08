@@ -12,7 +12,7 @@
 ;; Icons in completion UI (with Marginalia or Corfu)
 (use-package nerd-icons-completion
   :ensure t
-  :after (marginalia)
+  :after marginalia
   :hook (marginalia-mode . nerd-icons-completion-marginalia-setup)
   :init
   (nerd-icons-completion-mode))

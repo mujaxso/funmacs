@@ -1,72 +1,49 @@
-;;; funmacs-corfu.el -*- lexical-binding: t; -*-
+;;; funmacs-corfu-ide.el --- Corfu IDE-style configuration -*- lexical-binding: t; -*-
 
-;;; Commentary:
-;; corfu completion ui
-
-;;; code
+;; Dependencies:
+;; corfu, corfu-popupinfo, cape, marginalia
 
 (use-package corfu
   :ensure t
-  ;; Optional customizations
   :custom
-  (corfu-cycle t)                ;; Enable cycling for `corfu-next/previous'
-  (corfu-auto t)                 ;; Enable auto completion
-  (corfu-separator ?\s)          ;; Orderless field separator
-  (corfu-quit-at-boundary nil)   ;; Never quit at completion boundary
-  ;; (corfu-quit-no-match nil)      ;; Never quit, even if there is no match
-  ;; (corfu-preview-current nil)    ;; Disable current candidate preview
-  ;; (corfu-preselect-first nil)    ;; Disable candidate preselection
-  ;; (corfu-on-exact-match nil)     ;; Configure handling of exact matches
-  (corfu-scroll-margin 5)        ;; Use scroll margin
+  (corfu-cycle t)                ;; Cycle candidates
+  (corfu-auto t)                 ;; Auto completion
+  (corfu-separator ?\s)          ;; Orderless separator
+  (corfu-quit-at-boundary nil)   ;; Never quit automatically
+  (corfu-scroll-margin 5)        ;; Scroll margin
+  (completion-styles '(orderless basic)) ;; IDE-like fuzzy matching
 
-  ;; Enable Corfu only for certain modes.
-  ;; :hook ((prog-mode . corfu-mode)
-  ;;        (shell-mode . corfu-mode)
-  ;;        (eshell-mode . corfu-mode))
-
-  ;; Recommended: Enable Corfu globally.
-  ;; This is recommended since Dabbrev can be used globally (M-/).
-  ;; See also `corfu-excluded-modes'.
   :init
-  (global-corfu-mode)
-  ;; Enable history
-  (corfu-history-mode t)
-  ;; Enable indexed
-  (corfu-indexed-mode t)
-  ;; ;; Enable info
-  ;; (corfu-info-mode t)
-  ;; Enable popupinfo
-  (corfu-popupinfo-mode t)
-  ;; ;; Enable quick
-  ;; (corfu-quick-mode t)
-  ;; Aggressive completion, cheap prefix filtering.
-  (setq corfu-auto t
-        corfu-quit-no-match 'separator
-        corfu-auto-delay 0
-        corfu-auto-prefix 0
-        completion-styles '(basic))
+  (global-corfu-mode)            ;; Enable Corfu everywhere
+  (corfu-history-mode t)         ;; Remember completions
+  (corfu-indexed-mode t)         ;; Index completions
+  (corfu-popupinfo-mode t)       ;; Show documentation popup
+  (setq corfu-auto-delay 0
+        corfu-auto-prefix 1      ;; Trigger after 1 char
+        corfu-quit-no-match 'separator)
+
   :bind (:map corfu-map
               ("C-n" . corfu-next)
               ("C-p" . corfu-previous)
-	      ("<escape>" . corfu-quit)
+              ("<escape>" . corfu-quit)
               ("<return>" . corfu-insert)
               ("M-d" . corfu-show-documentation)
-              ("M-l" . corfu-show-location)
-	      )
-  ;;:hook
-  ;; after init
-  ;;(after-init . corfu-mode)
-  ;; ;; yasnippet suggestion for lsp-mode
-  ;; (eglot-managed-mode . funmacs/eglot-capf)
-  ;; :config
-  ;; ;; add suggestion for yasnippets when using eglot
-  ;; (defun funmacs/eglot-capf ()
-  ;;   (setq-local completion-at-point-functions
-  ;; 		(list (cape-super-capf
-  ;; 		       #'eglot-completion-at-point
-  ;;                      (cape-company-to-capf #'company-yasnippet)))))
+              ("M-l" . corfu-show-location))
+
+  :config
+  ;; Add Nerd Font icons to completion candidates
+  (use-package nerd-icons-completion
+    :ensure t
+    :config
+    (nerd-icons-completion-mode 1))
+
+  ;; Optional: integrate yasnippet completions
+  ;; (use-package corfu-popupinfo
+  ;;   :ensure t
+  ;;   :config
+  ;;   (corfu-popupinfo-mode +1))
   )
 
 (provide 'funmacs-corfu)
 
-;;; funmacs-corfu.el ends here
+;;; funmacs-corfu-ide.el ends here

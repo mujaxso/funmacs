@@ -26,7 +26,7 @@
 
   ;; Common options: deepseek/deepseek-chat, deepseek/deepseek-coder
   ;; Default model (OpenRouter)
-  (setq aidermacs-default-model "openrouter/deepseek/deepseek-r1:free"
+  (setq aidermacs-default-model "openrouter/qwen/qwen3-235b-a22b:free"
         aidermacs-auto-commits nil
         aidermacs-use-git t)
   

@@ -41,6 +41,8 @@
 (require 'funmacs-vertico)
 (require 'funmacs-orderless)
 (require 'funmacs-embark)
+(require 'funmacs-consult)
+(require 'funmacs-marginalia)
 
 ;; Corfu completion
 (add-to-list 'load-path (expand-file-name "completion/corfu" funmacs-modules-dir))
@@ -76,11 +78,22 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(aidermacs apheleia cape corfu doom-modeline eat embark-consult
-	       lsp-tailwindcss magit markdown-preview-mode
-	       modus-themes nerd-icons-completion nerd-icons-corfu
-	       nerd-icons-dired nix-mode orderless svelte-mode
-	       tempel-collection vertico vterm vue-mode vundo)))
+   '(aidermacs apheleia bind-key cape cl-generic cl-lib compat cond-let
+	       connection consult corfu csharp-mode dash dictionary
+	       doom-modeline edit-indirect editorconfig eglot eldoc
+	       elixir-ts-mode embark embark-consult erc
+	       external-completion f faceup flymake heex-ts-mode ht
+	       idlwave jsonrpc less-css-mode let-alist link llama
+	       lsp-mode lsp-tailwindcss lv magit magit-section map
+	       marginalia markdown-mode markdown-preview-mode mmm-mode
+	       modus-themes nadvice nerd-icons nerd-icons-completion
+	       nerd-icons-corfu nerd-icons-dired nix-mode ntlm
+	       orderless org peg project python s seq shrink-path
+	       so-long soap-client spinner ssass-mode svelte-mode svg
+	       tempel tempel-collection track-changes tramp transient
+	       use-package verilog-mode vertico vterm vterm-toggle
+	       vue-html-mode vue-mode vundo wallpaper web-server
+	       websocket which-key window-tool-bar with-editor xref)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

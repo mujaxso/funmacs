@@ -1,20 +1,20 @@
-;;; funmacs-orderless.el --- Orderless completion module -*- lexical-binding: t; -*-
+;;; funmacs-orderless.el --- Fuzzy matching for minibuffer -*- lexical-binding: t; -*-
 
 ;;; Commentary:
-;; Provides advanced completion style using Orderless.
-;; This replaces the default completion style with more flexible matching.
+;; Enable orderless fuzzy matching globally (including Vertico)
 
 ;;; Code:
 
 (use-package orderless
   :ensure t
-  :init
-  ;; Configure completion styles globally
-  (setq completion-styles '(orderless basic)
-        completion-category-defaults nil
-        completion-category-overrides
-        '((file (styles basic partial-completion)))))
+  :demand t
+  :custom
+  ;; Enable orderless everywhere
+  (completion-styles '(orderless))
+  (completion-category-defaults nil)
+  ;; For file completion, partial-completion keeps `/` and `~` working
+  (completion-category-overrides
+   '((file (styles partial-completion)))))
 
 (provide 'funmacs-orderless)
-
 ;;; funmacs-orderless.el ends here
