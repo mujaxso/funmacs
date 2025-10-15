@@ -54,6 +54,7 @@
 (add-to-list 'load-path (expand-file-name "lang" funmacs-modules-dir))
 (require 'funmacs-c)
 (require 'funmacs-cpp)
+(require 'funmacs-zig)
 (require 'funmacs-python)
 (require 'funmacs-javascript)
 (require 'funmacs-typescript)
@@ -88,12 +89,13 @@
 	       marginalia markdown-mode markdown-preview-mode mmm-mode
 	       modus-themes nadvice nerd-icons nerd-icons-completion
 	       nerd-icons-corfu nerd-icons-dired nix-mode ntlm
-	       orderless org peg project python s seq shrink-path
-	       so-long soap-client spinner ssass-mode svelte-mode svg
-	       tempel tempel-collection track-changes tramp transient
-	       use-package verilog-mode vertico vterm vterm-toggle
-	       vue-html-mode vue-mode vundo wallpaper web-server
-	       websocket which-key window-tool-bar with-editor xref)))
+	       orderless org peg project python reformatter s seq
+	       shrink-path so-long soap-client spinner ssass-mode
+	       svelte-mode svg tempel tempel-collection track-changes
+	       tramp transient use-package verilog-mode vertico vterm
+	       vterm-toggle vue-html-mode vue-mode vundo wallpaper
+	       web-server websocket which-key window-tool-bar
+	       with-editor xref zig-mode)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
