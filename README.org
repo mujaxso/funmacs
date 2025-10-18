@@ -5,6 +5,14 @@ It is organized into =core/= and =modules/= directories with each feature packag
 
 ---
 
+#+BEGIN_HTML
+<div style="display: flex; justify-content: center; gap: 20px;">
+  <div><img src="https://raw.githubusercontent.com/mujaxso/funmacs/main/assets/img/dashboard.png" alt="Funmcs Logo" ><br></div>
+  <div><img src="https://raw.githubusercontent.com/mujaxso/funmacs/main/assets/img/magit.png" alt="Funmcs Magit"><br></div>
+  <div><img src="https://raw.githubusercontent.com/mujaxso/funmacs/main/assets/img/magit1.png" alt="Funmcs Magit"><br></div>  
+</div>
+#+END_HTML   
+
 * ✨ Features
 
 ** 🎨 UI & Aesthetics
