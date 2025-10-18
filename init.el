@@ -28,6 +28,7 @@
 (require 'funmacs-modeline)
 (require 'funmacs-nerd-icons)
 (require 'funmacs-ligature)
+(require 'funmacs-dashboard)
 
 ;; AI
 (add-to-list 'load-path (expand-file-name "ai" funmacs-modules-dir))
@@ -81,9 +82,9 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    '(aidermacs apheleia bind-key cape cl-generic cl-lib compat cond-let
-	       connection consult corfu csharp-mode dash dictionary
-	       doom-modeline edit-indirect editorconfig eglot eldoc
-	       elixir-ts-mode embark embark-consult erc
+	       connection consult corfu csharp-mode dash dashboard
+	       dictionary doom-modeline edit-indirect editorconfig
+	       eglot eldoc elixir-ts-mode embark embark-consult erc
 	       external-completion f faceup flymake heex-ts-mode ht
 	       idlwave jsonrpc less-css-mode let-alist ligature link
 	       llama lsp-mode lsp-tailwindcss lv magit magit-section
