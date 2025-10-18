@@ -77,7 +77,8 @@ git clone https://github.com/mujaxso/funmacs.git ~/.config/emacs
 
 ## License
 
-MIT License
+FunMacs is licensed under the MIT license. [See LICENSE for more information](https://github.com/mujaxso/funmacs/blob/master/LICENSE).
+
 ---
 
 > FOSS [foss.land](https://www.foss.land) &nbsp;&middot;&nbsp;
