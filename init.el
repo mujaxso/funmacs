@@ -27,6 +27,7 @@
 (add-to-list 'load-path (expand-file-name "ui" funmacs-modules-dir))
 (require 'funmacs-modeline)
 (require 'funmacs-nerd-icons)
+(require 'funmacs-ligature)
 
 ;; AI
 (add-to-list 'load-path (expand-file-name "ai" funmacs-modules-dir))
@@ -84,18 +85,19 @@
 	       doom-modeline edit-indirect editorconfig eglot eldoc
 	       elixir-ts-mode embark embark-consult erc
 	       external-completion f faceup flymake heex-ts-mode ht
-	       idlwave jsonrpc less-css-mode let-alist link llama
-	       lsp-mode lsp-tailwindcss lv magit magit-section map
-	       marginalia markdown-mode markdown-preview-mode mmm-mode
-	       modus-themes nadvice nerd-icons nerd-icons-completion
-	       nerd-icons-corfu nerd-icons-dired nix-mode ntlm
-	       orderless org peg project python reformatter s seq
-	       shrink-path so-long soap-client spinner ssass-mode
-	       svelte-mode svg tempel tempel-collection track-changes
-	       tramp transient use-package verilog-mode vertico vterm
-	       vterm-toggle vue-html-mode vue-mode vundo wallpaper
-	       web-server websocket which-key window-tool-bar
-	       with-editor xref zig-mode)))
+	       idlwave jsonrpc less-css-mode let-alist ligature link
+	       llama lsp-mode lsp-tailwindcss lv magit magit-section
+	       map marginalia markdown-mode markdown-preview-mode
+	       mmm-mode modus-themes nadvice nerd-icons
+	       nerd-icons-completion nerd-icons-corfu nerd-icons-dired
+	       nix-mode ntlm orderless org peg project python
+	       reformatter s seq shrink-path so-long soap-client
+	       spinner ssass-mode svelte-mode svg tempel
+	       tempel-collection track-changes tramp transient
+	       use-package verilog-mode vertico vterm vterm-toggle
+	       vue-html-mode vue-mode vundo wallpaper web-server
+	       websocket which-key window-tool-bar with-editor xref
+	       zig-mode)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
