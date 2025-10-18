@@ -1,7 +1,6 @@
 # Funmacs
 
-**Skip the configuration rabbit hole.** Funmacs is a production-ready Emacs setup with modern tooling baked in—LSP integration, tree-sitter parsing, and a refined completion experience. Its modular core/ and modules/ architecture means you can extend or strip down features without breaking anything.
-
+**Skip the configuration rabbit hole.** Funmacs is a production-ready Emacs setup with modern tooling baked in—LSP integration using eglot, tree-sitter parsing, and a refined completion experience. Its modular core/ and modules/ architecture means you can extend or strip down features without breaking anything.
 
 ---
 
