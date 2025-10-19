@@ -6,6 +6,7 @@
 ;;;code
 
 (use-package modus-themes
+  :demand t
   :init (setq modus-themes-italic-constructs t)
   :config (load-theme 'modus-vivendi-tinted t))
 

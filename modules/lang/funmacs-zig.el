@@ -8,7 +8,9 @@
 (use-package zig-mode
   :ensure t
   :mode ("\\.zig\\'" . zig-mode)
-  :hook (zig-mode . eglot-ensure))
+  :hook (zig-mode . eglot-ensure)
+  :custom
+  (zig-format-on-save nil))
 
 (provide 'funmacs-zig)
 

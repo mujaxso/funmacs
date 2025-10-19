@@ -7,6 +7,7 @@
 
 (use-package dashboard
   :ensure t
+  :demand t
   :config
   (dashboard-setup-startup-hook)
   :init
