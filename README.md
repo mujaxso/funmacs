@@ -207,7 +207,7 @@ git clone https://github.com/mujaxso/funmacs.git ~/.config/emacs
 If you enjoy Funmacs and want to **support ongoing development**, you can:
 
 **Buy me a coffee:**  
-[![Buy Me A Coffee](https://www.buymeacoffee.com/assets/img/custom_images/purple_img.png)](https://www.buymeacoffee.com/mujaxso)
+[![Buy Me A Coffee](https://www.buymeacoffee.com/assets/img/custom_images/purple_img.png)](https://buymeacoffee.com/mujaxso)
 
 **Or become a patron on Patreon:**  
 [![Patreon](https://c5.patreon.com/external/logo/become_a_patron_button@2x.png)](https://www.patreon.com/mujaxso)
