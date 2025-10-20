@@ -19,7 +19,7 @@
 (use-package aidermacs
   :ensure t
   :commands (aidermacs-chat)
-  :bind (("C-c a" . aidermacs-transient-menu))
+  :bind (("C-c i" . aidermacs-transient-menu))
   :config
   ;; Default provider DeepSeek
   (setq aidermacs-default-provider 'deepseek)

@@ -30,6 +30,14 @@
 (require 'funmacs-ligature)
 (require 'funmacs-dashboard)
 
+;; ORG
+(add-to-list 'load-path (expand-file-name "org" funmacs-modules-dir))
+(require 'funmacs-org)
+(require 'funmacs-agenda)
+(require 'funmacs-todo)
+(require 'funmacs-capture)
+(require 'funmacs-superstar)
+
 ;; AI
 (add-to-list 'load-path (expand-file-name "ai" funmacs-modules-dir))
 (require 'funmacs-aidermacs)
@@ -91,10 +99,10 @@
 	       map marginalia markdown-mode markdown-preview-mode
 	       mmm-mode modus-themes nadvice nerd-icons
 	       nerd-icons-completion nerd-icons-corfu nerd-icons-dired
-	       nix-mode ntlm orderless org peg project python
-	       reformatter s seq shrink-path so-long soap-client
-	       spinner ssass-mode svelte-mode svg tempel
-	       tempel-collection track-changes tramp transient
+	       nix-mode ntlm orderless org org-appear org-superstar
+	       peg project python reformatter s seq shrink-path
+	       so-long soap-client spinner ssass-mode svelte-mode svg
+	       tempel tempel-collection track-changes tramp transient
 	       use-package verilog-mode vertico vterm vterm-toggle
 	       vue-html-mode vue-mode vundo wallpaper web-server
 	       websocket which-key window-tool-bar with-editor xref
@@ -104,4 +112,13 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(org-document-title ((t (:height 1.5 :weight bold :underline nil))))
+ '(org-level-1 ((t (:inherit outline-1 :height 1.3 :weight bold))))
+ '(org-level-2 ((t (:inherit outline-2 :height 1.2 :weight bold))))
+ '(org-level-3 ((t (:inherit outline-3 :height 1.1 :weight semi-bold))))
+ '(org-level-4 ((t (:inherit outline-4 :height 1.05 :weight semi-bold))))
+ '(org-level-5 ((t (:inherit outline-5 :height 1.0))))
+ '(org-superstar-first ((t (:inherit org-warning :foreground "#ECBE7B"))))
+ '(org-superstar-header-bullet ((t (:inherit default :foreground "#ff6c6b" :weight bold))))
+ '(org-superstar-item ((t (:inherit default :foreground "#51afef"))))
+ '(org-superstar-leading ((t (:inherit default :foreground "#3a3f4b")))))
