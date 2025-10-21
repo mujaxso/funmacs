@@ -16,5 +16,8 @@
 
 (add-hook 'prog-mode-hook #'funmacs-enable-line-numbers)
 
+;; autocomplete paired brackets
+(electric-pair-mode 1)
+
 (provide 'funmacs-settings)
 ;;; funmacs-settings.el ends here
