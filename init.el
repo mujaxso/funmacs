@@ -65,6 +65,7 @@
 (require 'funmacs-c)
 (require 'funmacs-cpp)
 (require 'funmacs-zig)
+(require 'funmacs-shell)
 (require 'funmacs-python)
 (require 'funmacs-javascript)
 (require 'funmacs-typescript)

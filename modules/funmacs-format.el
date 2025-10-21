@@ -183,7 +183,7 @@
   
   ;; Shell/Bash - shfmt (built-in)
   (setf (alist-get 'shfmt apheleia-formatters)
-        '("shfmt" "-"))
+        '("shfmt" "-i" "2" "-"))
   (setf (alist-get 'sh-mode apheleia-mode-alist) 'shfmt)
   (setf (alist-get 'bash-ts-mode apheleia-mode-alist) 'shfmt)
   
