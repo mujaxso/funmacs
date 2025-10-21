@@ -126,7 +126,7 @@
         ;; Build Systems & Config
         (cmake-mode . cmake-ts-mode)
         (dockerfile-mode . dockerfile-ts-mode)
-        (nix-mode . nix-ts-mode)
+        ;;(nix-mode . nix-ts-mode)
         
         ;; Documentation & Markup
         (markdown-mode . markdown-ts-mode)
