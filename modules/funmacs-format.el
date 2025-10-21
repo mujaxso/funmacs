@@ -55,7 +55,10 @@
   ;; ──────────────────────────────────────────────────────────
   
   (setf (alist-get 'biome apheleia-formatters)
-        '("biome" "format" "--stdin-file-path" filepath))
+	'("biome" "format" 
+          "--indent-style=space" 
+          "--indent-width=2" 
+          "--stdin-file-path" filepath))
   
   ;; JavaScript/TypeScript with Biome
   (setf (alist-get 'javascript-mode apheleia-mode-alist) 'biome)

@@ -91,29 +91,38 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(aidermacs apheleia bind-key cape cl-generic cl-lib compat cond-let
-	       connection consult corfu csharp-mode dash dashboard
-	       dictionary doom-modeline edit-indirect editorconfig
-	       eglot eldoc elixir-ts-mode embark embark-consult erc
-	       external-completion f faceup flymake heex-ts-mode ht
-	       idlwave jsonrpc less-css-mode let-alist ligature link
-	       llama lsp-mode lsp-tailwindcss lv magit magit-section
-	       map marginalia markdown-mode markdown-preview-mode
-	       mmm-mode modus-themes nadvice nerd-icons
-	       nerd-icons-completion nerd-icons-corfu nerd-icons-dired
-	       nix-mode ntlm orderless org org-appear org-superstar
-	       peg project python reformatter s seq shrink-path
-	       so-long soap-client spinner ssass-mode svelte-mode svg
-	       tempel tempel-collection track-changes tramp transient
-	       use-package verilog-mode vertico vterm vterm-toggle
-	       vue-html-mode vue-mode vundo wallpaper web-server
-	       websocket which-key window-tool-bar with-editor xref
-	       zig-mode)))
+   '(aidermacs apheleia bind-key calibredb cape cl-generic cl-lib compat
+	       cond-let connection consult corfu csharp-mode dash
+	       dashboard dictionary doom-modeline edit-indirect
+	       editorconfig eglot eldoc elfeed elixir-ts-mode emacsql
+	       embark embark-consult erc esxml external-completion f
+	       faceup flymake gptel heex-ts-mode ht htmlize idlwave
+	       impatient-mode jsonrpc language-detection less-css-mode
+	       let-alist ligature link llama lsp-mode lsp-tailwindcss
+	       lv magit magit-section map marginalia markdown-mode
+	       markdown-preview-mode mmm-mode modus-themes nadvice
+	       nerd-icons nerd-icons-completion nerd-icons-corfu
+	       nerd-icons-dired nix-mode nov ntlm orderless org
+	       org-appear org-superstar peg poly-org polymode project
+	       python reformatter request s seq shrface shrink-path
+	       simple-httpd so-long soap-client spinner ssass-mode
+	       svelte-mode svg tempel tempel-collection track-changes
+	       tramp transient use-package valign verilog-mode vertico
+	       vterm vterm-toggle vue-html-mode vue-mode vundo
+	       wallabag wallpaper web-server websocket which-key
+	       window-tool-bar with-editor xref zig-mode)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(markdown-header-delimiter-face ((t (:foreground "#616161" :height 0.9))))
+ '(markdown-header-face-1 ((t (:height 1.8 :weight extra-bold :foreground "#79c0ff"))))
+ '(markdown-header-face-2 ((t (:height 1.4 :weight extra-bold :foreground "#79c0ff"))))
+ '(markdown-header-face-3 ((t (:height 1.2 :weight extra-bold :foreground "#79c0ff"))))
+ '(markdown-header-face-4 ((t (:height 1.15 :weight bold :foreground "#79c0ff"))))
+ '(markdown-header-face-5 ((t (:height 1.1 :weight bold :foreground "#79c0ff"))))
+ '(markdown-header-face-6 ((t (:height 1.05 :weight semi-bold :foreground "#79c0ff"))))
  '(org-document-title ((t (:height 1.5 :weight bold :underline nil))))
  '(org-level-1 ((t (:inherit outline-1 :height 1.3 :weight bold))))
  '(org-level-2 ((t (:inherit outline-2 :height 1.2 :weight bold))))

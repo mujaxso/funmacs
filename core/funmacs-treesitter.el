@@ -129,8 +129,8 @@
         ;;(nix-mode . nix-ts-mode)
         
         ;; Documentation & Markup
-        (markdown-mode . markdown-ts-mode)
-        (gfm-mode . markdown-ts-mode)
+        ;;(markdown-mode . markdown-ts-mode)
+        ;;(gfm-mode . markdown-ts-mode)
         
         ;; Other
         (sql-mode . sql-ts-mode)))
