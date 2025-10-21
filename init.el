@@ -79,6 +79,7 @@
 (require 'funmacs-svelte)
 (require 'funmacs-tailwind)
 (require 'funmacs-markdown)
+(require 'funmacs-toml)
 
 (message "✅ Funmacs full config loaded!")
 (provide 'funmacs-init)

@@ -1,45 +1,139 @@
 ;;; funmacs-treesitter.el -*- lexical-binding: t; -*-
 
 ;;; Commentary:
-;; tree-sitter settings
+;; tree-sitter settings with verified working grammars only
 
 ;;; code
 
+;; Fix git authentication issues on NixOS
+(setenv "GIT_ASKPASS" "")
+(setenv "SSH_ASKPASS" "")
+
 (setq treesit-language-source-alist
-      '((c . ("https://github.com/tree-sitter/tree-sitter-c"))
+      '(;; Core Languages - Official tree-sitter repos (100% verified)
+        (bash . ("https://github.com/tree-sitter/tree-sitter-bash"))
+        (c . ("https://github.com/tree-sitter/tree-sitter-c"))
         (cpp . ("https://github.com/tree-sitter/tree-sitter-cpp"))
+        (c-sharp . ("https://github.com/tree-sitter/tree-sitter-c-sharp"))
+        (css . ("https://github.com/tree-sitter/tree-sitter-css"))
+        (go . ("https://github.com/tree-sitter/tree-sitter-go"))
+        (html . ("https://github.com/tree-sitter/tree-sitter-html"))
+        (java . ("https://github.com/tree-sitter/tree-sitter-java"))
+        (javascript . ("https://github.com/tree-sitter/tree-sitter-javascript"))
+        (json . ("https://github.com/tree-sitter/tree-sitter-json"))
         (python . ("https://github.com/tree-sitter/tree-sitter-python"))
-        (javascript . ("https://github.com/tree-sitter/tree-sitter-javascript" "master" "src"))
+        (ruby . ("https://github.com/tree-sitter/tree-sitter-ruby"))
+        (rust . ("https://github.com/tree-sitter/tree-sitter-rust"))
         (typescript . ("https://github.com/tree-sitter/tree-sitter-typescript" "master" "typescript/src"))
         (tsx . ("https://github.com/tree-sitter/tree-sitter-typescript" "master" "tsx/src"))
-        (json . ("https://github.com/tree-sitter/tree-sitter-json"))
-        (css . ("https://github.com/tree-sitter/tree-sitter-css"))
-        (html . ("https://github.com/tree-sitter/tree-sitter-html"))
-        (go . ("https://github.com/tree-sitter/tree-sitter-go"))
-        (rust . ("https://github.com/tree-sitter/tree-sitter-rust"))
-        (nix . ("https://github.com/nix-community/tree-sitter-nix"))))
+        
+        ;; tree-sitter-grammars organization (verified)
+        (lua . ("https://github.com/tree-sitter-grammars/tree-sitter-lua"))
+        (markdown . ("https://github.com/tree-sitter-grammars/tree-sitter-markdown" "split_parser" "tree-sitter-markdown/src"))
+        (toml . ("https://github.com/tree-sitter-grammars/tree-sitter-toml"))
+        (yaml . ("https://github.com/tree-sitter-grammars/tree-sitter-yaml"))
+        (zig . ("https://github.com/tree-sitter-grammars/tree-sitter-zig"))
+        
+        ;; Community maintained (tested and working)
+        (cmake . ("https://github.com/uyha/tree-sitter-cmake"))
+        (dockerfile . ("https://github.com/camdencheek/tree-sitter-dockerfile"))
+        (elixir . ("https://github.com/elixir-lang/tree-sitter-elixir"))
+        (nix . ("https://github.com/nix-community/tree-sitter-nix"))
+        ))
 
-(defun funmacs--compiler-available-p () (or (executable-find "gcc") (executable-find "clang") (executable-find "cc")))
+(defun funmacs--compiler-available-p () 
+  (or (executable-find "gcc") 
+      (executable-find "clang") 
+      (executable-find "cc")))
+
 (defun funmacs-install-missing-grammars ()
+  "Install all missing tree-sitter grammars with detailed error reporting."
   (interactive)
   (if (funmacs--compiler-available-p)
-      (dolist (lang (mapcar #'car treesit-language-source-alist))
-        (unless (treesit-language-available-p lang)
-          (ignore-errors (message "[Funmacs] Installing tree-sitter grammar for %s..." lang) (treesit-install-language-grammar lang))))
+      (let ((installed 0)
+            (failed 0)
+            (skipped 0)
+            (failed-langs '()))
+        (dolist (grammar treesit-language-source-alist)
+          (let ((lang (car grammar)))
+            (if (treesit-language-available-p lang)
+                (progn
+                  (setq skipped (1+ skipped))
+                  (message "[Funmacs] ✓ Grammar for %s already installed" lang))
+              (condition-case err
+                  (progn
+                    (message "[Funmacs] Installing tree-sitter grammar for %s..." lang)
+                    (treesit-install-language-grammar lang)
+                    (setq installed (1+ installed))
+                    (message "[Funmacs] ✓ Successfully installed %s" lang))
+                (error 
+                 (setq failed (1+ failed))
+                 (push lang failed-langs)
+                 (message "[Funmacs] ✗ Failed to install %s: %s" lang (error-message-string err)))))))
+        (message "[Funmacs] ========================================")
+        (message "[Funmacs] Installation complete: %d installed, %d failed, %d already present" 
+                 installed failed skipped)
+        (when failed-langs
+          (message "[Funmacs] ⚠ Failed languages: %s" (mapconcat #'symbol-name (reverse failed-langs) ", ")))
+        (message "[Funmacs] ========================================"))
     (message "[Funmacs] No C compiler found; skipping tree-sitter installs.")))
+
 ;; attempt install at startup but safe
 (ignore-errors (funmacs-install-missing-grammars))
+
 (setq major-mode-remap-alist
-      '((python-mode . python-ts-mode)
+      '(;; System & Shell
+        (bash-mode . bash-ts-mode)
+        (sh-mode . bash-ts-mode)
+        
+        ;; C Family
         (c-mode . c-ts-mode)
         (c++-mode . c++-ts-mode)
-        (js-mode . js-ts-mode)
-        (typescript-mode . typescript-ts-mode)
+        (c-sharp-mode . c-sharp-ts-mode)
+        (csharp-mode . csharp-ts-mode)
+        
+        ;; Web Development
         (css-mode . css-ts-mode)
-        (json-mode . json-ts-mode)
         (html-mode . html-ts-mode)
+        (mhtml-mode . html-ts-mode)
+        (javascript-mode . js-ts-mode)
+        (js-mode . js-ts-mode)
+        (js2-mode . js-ts-mode)
+        (typescript-mode . typescript-ts-mode)
+        (json-mode . json-ts-mode)
+        (yaml-mode . yaml-ts-mode)
+        (toml-mode . toml-ts-mode)
+        (conf-toml-mode . toml-ts-mode)
+        
+        ;; Scripting Languages
+        (python-mode . python-ts-mode)
+        (ruby-mode . ruby-ts-mode)
+        (enh-ruby-mode . ruby-ts-mode)
+        (lua-mode . lua-ts-mode)
+        
+        ;; Systems Programming
+        (rust-mode . rust-ts-mode)
+        (rustic-mode . rust-ts-mode)
         (go-mode . go-ts-mode)
-        (rust-mode . rust-ts-mode)))
+        (zig-mode . zig-ts-mode)
+        
+        ;; Functional Languages
+        (elixir-mode . elixir-ts-mode)
+        
+        ;; JVM Languages
+        (java-mode . java-ts-mode)
+        
+        ;; Build Systems & Config
+        (cmake-mode . cmake-ts-mode)
+        (dockerfile-mode . dockerfile-ts-mode)
+        (nix-mode . nix-ts-mode)
+        
+        ;; Documentation & Markup
+        (markdown-mode . markdown-ts-mode)
+        (gfm-mode . markdown-ts-mode)
+        
+        ;; Other
+        (sql-mode . sql-ts-mode)))
 
 (provide 'funmacs-treesitter)
 

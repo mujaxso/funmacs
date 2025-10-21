@@ -218,10 +218,15 @@
   (setf (alist-get 'terraform-mode apheleia-mode-alist) 'terraform)
   
   ;; TOML - prettier with plugin (built-in)
-  (setf (alist-get 'prettier-toml apheleia-formatters)
-        '("prettier" "--plugin" "prettier-plugin-toml" "--stdin-filepath" filepath))
-  (setf (alist-get 'toml-mode apheleia-mode-alist) 'prettier-toml)
-  (setf (alist-get 'toml-ts-mode apheleia-mode-alist) 'prettier-toml)
+  ;; (setf (alist-get 'prettier-toml apheleia-formatters)
+  ;;       '("prettier" "--plugin" "prettier-plugin-toml" "--stdin-filepath" filepath))
+  ;; (setf (alist-get 'toml-mode apheleia-mode-alist) 'prettier-toml)
+  ;; (setf (alist-get 'toml-ts-mode apheleia-mode-alist) 'prettier-toml)
+  (setf (alist-get 'taplo apheleia-formatters)
+	'("taplo" "fmt" "-"))
+  (setf (alist-get 'toml-mode apheleia-mode-alist) 'taplo)
+  (setf (alist-get 'toml-ts-mode apheleia-mode-alist) 'taplo)
+
   
   ;; LaTeX - latexindent (built-in)
   (setf (alist-get 'latexindent apheleia-formatters)
