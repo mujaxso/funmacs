@@ -19,5 +19,10 @@
 ;; autocomplete paired brackets
 (electric-pair-mode 1)
 
+(use-package exec-path-from-shell
+  :config
+  (exec-path-from-shell-initialize))
+
+
 (provide 'funmacs-settings)
 ;;; funmacs-settings.el ends here

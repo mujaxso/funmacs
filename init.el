@@ -95,11 +95,12 @@
 	       cond-let connection consult corfu csharp-mode dash
 	       dashboard dictionary doom-modeline edit-indirect
 	       editorconfig eglot eldoc elfeed elixir-ts-mode emacsql
-	       embark embark-consult erc esxml external-completion f
-	       faceup flymake gptel heex-ts-mode ht htmlize idlwave
-	       impatient-mode jsonrpc language-detection less-css-mode
-	       let-alist ligature link llama lsp-mode lsp-tailwindcss
-	       lv magit magit-section map marginalia markdown-mode
+	       embark embark-consult erc esxml exec-path-from-shell
+	       external-completion f faceup flymake gptel heex-ts-mode
+	       ht htmlize idlwave impatient-mode jsonrpc
+	       language-detection less-css-mode let-alist ligature
+	       link llama lsp-mode lsp-tailwindcss lv magit
+	       magit-section map marginalia markdown-mode
 	       markdown-preview-mode mmm-mode modus-themes nadvice
 	       nerd-icons nerd-icons-completion nerd-icons-corfu
 	       nerd-icons-dired nix-mode nov ntlm orderless org

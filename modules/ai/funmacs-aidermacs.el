@@ -16,15 +16,19 @@
 
 ;;; Code:
 
+;;; Code:
+
 (use-package aidermacs
   :ensure t
   :commands (aidermacs-chat)
   :bind (("C-c i" . aidermacs-transient-menu))
   :config
+  ;; Set the correct executable name for NixOS
+  (setq aidermacs-program "aider")  ; NixOS package creates 'aider' command
+  
   ;; Default provider DeepSeek
   (setq aidermacs-default-provider 'deepseek)
 
-  ;; Common options: deepseek/deepseek-chat, deepseek/deepseek-coder
   ;; Default model (OpenRouter)
   (setq aidermacs-default-model "openrouter/qwen/qwen3-235b-a22b:free"
         aidermacs-auto-commits nil
@@ -36,12 +40,7 @@
           (deepseek  . ,(getenv "DEEPSEEK_API_KEY"))
           (openai    . ,(getenv "OPENAI_API_KEY"))
           (anthropic . ,(getenv "ANTHROPIC_API_KEY"))
-	  (openrouter . ,(getenv "OPENROUTER_API_KEY"))))
-
-  ;; ;; Extra args to skip warnings
-  ;; (setq aidermacs-extra-args
-  ;;       '("--no-show-model-warnings"
-  ;;         "--model" "deepseek/deepseek-coder"))
+          (openrouter . ,(getenv "OPENROUTER_API_KEY"))))
 
   ;; Open in side window on right
   (setq display-buffer-alist
