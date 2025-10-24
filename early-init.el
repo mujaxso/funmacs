@@ -60,6 +60,18 @@
       inhibit-default-init t
       initial-scratch-message nil)
 
+;; Hairline dividers, theme-colored, no extra padding
+(setq window-divider-default-right-width 2
+      window-divider-default-bottom-width 2
+      window-divider-default-places t)
+(window-divider-mode 1)
+
+;; No frame padding for maximum content area
+(modify-all-frames-parameters '((internal-border-width . 0)))
+
+;; Slim, symmetric fringes for minimal gutters
+(fringe-mode '(4 . 4))
+
 ;; =============================================================================
 ;; FRAME AND WINDOW OPTIMIZATION
 ;; =============================================================================
