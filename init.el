@@ -96,16 +96,17 @@
 	       dashboard dictionary doom-modeline edit-indirect
 	       editorconfig eglot eldoc elfeed elixir-ts-mode emacsql
 	       embark embark-consult erc esxml exec-path-from-shell
-	       external-completion f faceup flymake gptel heex-ts-mode
-	       ht htmlize idlwave impatient-mode jsonrpc
-	       language-detection less-css-mode let-alist ligature
-	       link llama lsp-mode lsp-tailwindcss lv magit
-	       magit-section map marginalia markdown-mode
-	       markdown-preview-mode mmm-mode modus-themes nadvice
-	       nerd-icons nerd-icons-completion nerd-icons-corfu
-	       nerd-icons-dired nix-mode nov ntlm orderless org
-	       org-appear org-superstar peg poly-org polymode project
-	       python reformatter request s seq shrface shrink-path
+	       external-completion f faceup flymake forge git-gutter
+	       gptel heex-ts-mode ht htmlize idlwave impatient-mode
+	       jsonrpc language-detection less-css-mode let-alist
+	       ligature link llama lsp-mode lsp-tailwindcss lv magit
+	       magit-org-todos magit-prime magit-section magit-todos
+	       map marginalia markdown-mode markdown-preview-mode
+	       mmm-mode modus-themes nadvice nerd-icons
+	       nerd-icons-completion nerd-icons-corfu nerd-icons-dired
+	       nix-mode nov ntlm orderless org org-appear
+	       org-superstar peg poly-org polymode project python
+	       reformatter request s seq shrface shrink-path
 	       simple-httpd so-long soap-client spinner ssass-mode
 	       svelte-mode svg tempel tempel-collection track-changes
 	       tramp transient use-package valign verilog-mode vertico
