@@ -22,6 +22,8 @@
 (require 'funmacs-eglot)
 ;;(require 'funmacs-eat)
 (require 'funmacs-vterm)
+(require 'funmacs-meow)
+(require 'funmacs-leader)
 
 ;; UI
 (add-to-list 'load-path (expand-file-name "ui" funmacs-modules-dir))
