@@ -1,0 +1,51 @@
+# .github/workflows/issue-welcome.yml
+name: Issue welcome and resolution
+
+on:
+  issues:
+    types: [opened, closed]
+
+permissions:
+  issues: write
+
+jobs:
+  issue_greet_or_close:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Welcome on open
+        if: github.event.action == 'opened'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const issue_number = context.payload.issue.number;
+            const opener = context.payload.issue.user.login;
+            const body = [
+              `Hey @${opener}, thanks for opening this issue!`,
+              `This project is maintained by Mujahid Siyam (@mujaxso).`,
+              `Please include your Emacs version, OS, steps to reproduce, and minimal config snippet if possible.`
+            ].join(' ');
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number,
+              body
+            });
+
+      - name: Resolution note on close
+        if: github.event.action == 'closed'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const issue_number = context.payload.issue.number;
+            const closer = context.actor;
+            const body = [
+              `This issue has been closed.`,
+              `If the problem persists on the latest main, please reopen or file a new issue.`,
+              `Resolved by @${closer}.`
+            ].join(' ');
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number,
+              body
+            });
