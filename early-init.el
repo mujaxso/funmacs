@@ -40,6 +40,11 @@
 (push '(vertical-scroll-bars) default-frame-alist)
 (push '(horizontal-scroll-bars) default-frame-alist)
 
+;; Early GUI toggles must be guarded for batch/tty
+(when (fboundp 'menu-bar-mode) (menu-bar-mode -1))   ;; safe in tty too [web:49]
+(when (fboundp 'tool-bar-mode) (tool-bar-mode -1))   ;; safe in GUI only [web:49]
+(when (fboundp 'scroll-bar-mode) (scroll-bar-mode -1)) ;; GUI-only
+
 ;; Alternative method for Emacs 27+
 (setq default-frame-alist
       (append (list
@@ -70,7 +75,10 @@
 (modify-all-frames-parameters '((internal-border-width . 0)))
 
 ;; Slim, symmetric fringes for minimal gutters
-(fringe-mode '(4 . 4))
+(when (fboundp 'fringe-mode) (fringe-mode '(4 . 4))) ;; GUI-only
+
+
+
 
 ;; =============================================================================
 ;; FRAME AND WINDOW OPTIMIZATION
