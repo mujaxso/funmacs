@@ -19,6 +19,10 @@
 ;; autocomplete paired brackets
 (electric-pair-mode 1)
 
+;; auto update file from disk
+(global-auto-revert-mode 1)
+
+;; load path from shell
 (use-package exec-path-from-shell
   :config
   (exec-path-from-shell-initialize))
