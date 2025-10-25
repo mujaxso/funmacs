@@ -123,8 +123,8 @@ autolabeler:
       - '/^build(\(.+\))?:/i'
 
 # Track all branches or specific branch
-branches:
-  - main
+# branches:
+#  - main
 
 # Comprehensive template with ALL information
 template: |
