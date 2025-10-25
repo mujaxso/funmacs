@@ -1,0 +1,37 @@
+name: Create Release
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Fetch ALL history for complete changelog
+
+      - name: Create Release with ALL commits
+        uses: softprops/action-gh-release@v2
+        with:
+          # Enable GitHub's native auto-generated notes (includes ALL commits + PRs)
+          generate_release_notes: true
+          
+          # Optional: Add draft notes from Release Drafter as well
+          # This combines both sources for maximum detail
+          append_body: true
+          
+          # Optional: Mark as draft to review before publishing
+          draft: false
+          
+          # Optional: Mark prereleases
+          prerelease: ${{ contains(github.ref, 'alpha') || contains(github.ref, 'beta') || contains(github.ref, 'rc') }}
+          
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
