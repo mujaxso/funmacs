@@ -24,8 +24,7 @@
     "Open a vterm in the project root."
     (interactive)
     (let ((default-directory (project-root (project-current t))))
-      (vterm-other-window)))
-  (global-set-key (kbd "C-c p v") #'funmacs-vterm-project))
+      (vterm-other-window))))
 
 ;; Enable vterm-toggle.el
 (use-package vterm-toggle
