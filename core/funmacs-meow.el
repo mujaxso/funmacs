@@ -139,16 +139,16 @@
 
   ;; --- FIX: Numeric expansions ---
   (meow-define-keys 'normal
-		    '("0" . meow-expand-0)
-		    '("1" . meow-expand-1)
-		    '("2" . meow-expand-2)
-		    '("3" . meow-expand-3)
-		    '("4" . meow-expand-4)
-		    '("5" . meow-expand-5)
-		    '("6" . meow-expand-6)
-		    '("7" . meow-expand-7)
-		    '("8" . meow-expand-8)
-		    '("9" . meow-expand-9))
+    '("0" . meow-expand-0)
+    '("1" . meow-expand-1)
+    '("2" . meow-expand-2)
+    '("3" . meow-expand-3)
+    '("4" . meow-expand-4)
+    '("5" . meow-expand-5)
+    '("6" . meow-expand-6)
+    '("7" . meow-expand-7)
+    '("8" . meow-expand-8)
+    '("9" . meow-expand-9))
 
   (message "Funmacs: Meow fully configured with numeric expansions."))
 
@@ -160,20 +160,6 @@
 
 ;; Enable immediately
 (funmacs/init-meow)
-
-;; Optional: integrate with general.el for consistent leader in other states
-(use-package general
-  :after meow
-  :config
-  (general-create-definer funmacs/leader
-    :states '(normal motion) :keymaps 'override :prefix "SPC")
-  (funmacs/leader
-   "TAB" '(mode-line-other-buffer :which-key "other buffer")
-   "y"   '(clipboard-kill-ring-save :which-key "copy to clipboard")
-   "v"   '(clipboard-yank :which-key "yank from clipboard")
-   "m"   '(man :which-key "man page")
-   "h k" '(describe-key :which-key "describe key")
-   "h f" '(describe-function :which-key "describe function")))
 
 (provide 'funmacs-meow)
 ;;; funmacs-meow.el ends here
