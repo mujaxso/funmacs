@@ -1,0 +1,102 @@
+# .github/release.yml
+# Configuration for GitHub's automatically generated release notes
+
+changelog:
+  # Group pull requests into sections based on labels
+  categories:
+    - title: 🚀 Features
+      labels:
+        - feature
+        - enhancement
+        - type:feature
+    - title: 🐛 Bug fixes
+      labels:
+        - bug
+        - fix
+        - type:bug
+    - title: ⚠️ Breaking changes
+      labels:
+        - breaking
+        - semver:major
+        - major
+    - title: 🧰 Maintenance
+      labels:
+        - chore
+        - maintenance
+        - refactor
+        - deps
+        - dependencies
+    - title: 🧪 Tests
+      labels:
+        - test
+        - tests
+    - title: 📚 Documentation
+      labels:
+        - docs
+        - documentation
+    - title: 🧱 CI/CD
+      labels:
+        - ci
+        - github-actions
+        - workflow
+    - title: 🔧 Configuration
+      labels:
+        - config
+        - build
+        - packaging
+  # Which labels to exclude from the changelog entirely
+  exclude:
+    labels:
+      - skip-changelog
+      - ignore
+      - internal
+      - wontfix
+      - invalid
+    authors:
+      - github-actions
+      - dependabot
+      - dependabot[bot]
+      - renovate[bot]
+  # Control how commits are associated to pull requests
+  # valid values: "merge", "squash", "rebase"
+  # Use "merge" to respect merge commits; "squash" often matches most repos using squash merging
+  commit_message_references:
+    # Detect PR references in commit subjects/bodies
+    # Examples matched: (#123), PR #123, pull request #123
+    enabled: true
+  # If you prefer squash merges, set this to squash
+  # If you want GitHub’s default behavior, remove the line below
+  use_merged_prs: true
+
+# Template controls the overall release notes body
+# Available template variables:
+# - $CHANGES: the categorized list
+# - $CONTRIBUTORS: contributors detected in this release
+# - $OWNER, $REPO, $TAG_NAME, $PREVIOUS_TAG_NAME
+# - $RELEASE_URL, $COMPARE_URL
+# See docs for up-to-date list.
+# The body template used when generating release notes
+template: |
+  ## Changes
+
+  $CHANGES
+
+  ### Contributors
+  Thanks to everyone who contributed to this release! 💜
+  $CONTRIBUTORS
+
+  ### Links
+  - Compare: $COMPARE_URL
+  - Release: $RELEASE_URL
+
+# Optional: fine-tune how titles are rendered for each change line
+# Default format from GitHub is acceptable, but you can provide hints via labels and the template above.
+# There is no native per-line change template in GitHub’s generator; that is a Release Drafter feature.
+
+# Optional: control how sections are titled when empty
+# GitHub omits empty sections by default; no extra config needed.
+
+# Notes:
+# - This file is used by GitHub’s “Generate release notes” feature when you draft or publish a release.
+# - To use it from the UI: Releases → Draft a new release → Auto-generate release notes.
+# - To use it via API or actions that set generate_release_notes: true, GitHub reads this file automatically.
