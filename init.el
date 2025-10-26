@@ -84,6 +84,7 @@
 (require 'funmacs-tailwind)
 (require 'funmacs-markdown)
 (require 'funmacs-toml)
+(require 'funmacs-docker)
 
 (message "✅ Funmacs full config loaded!")
 (provide 'funmacs-init)
