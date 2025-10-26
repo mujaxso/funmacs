@@ -155,6 +155,7 @@
 (defun funmacs/init-meow ()
   "Initialize Meow for Funmacs."
   (funmacs/meow-setup)
+  (delete-selection-mode 1)
   (meow-global-mode 1)
   (message "Funmacs: Meow global mode enabled."))
 
