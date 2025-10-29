@@ -24,6 +24,7 @@
 
 ;; UTF-8 as defaul
 (set-default-coding-systems 'utf-8)
+(prefer-coding-system 'utf-8)
 
 ;; load path from shell
 (use-package exec-path-from-shell
