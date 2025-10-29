@@ -22,6 +22,9 @@
 ;; auto update file from disk
 (global-auto-revert-mode 1)
 
+;; UTF-8 as defaul
+(set-default-coding-systems 'utf-8)
+
 ;; load path from shell
 (use-package exec-path-from-shell
   :config
