@@ -14,7 +14,11 @@
   :after org
   :hook ((org-mode . org-modern-mode)
          (org-agenda-finalize . org-modern-agenda)
-	 ))
+	 )
+  :config
+  (setq org-auto-align-tags nil
+        org-tags-column 0
+        org-hide-emphasis-markers t))
 
 (provide 'funmacs-org-modern)
 

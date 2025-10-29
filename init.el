@@ -39,7 +39,6 @@
 (require 'funmacs-agenda)
 (require 'funmacs-todo)
 (require 'funmacs-capture)
-(require 'funmacs-superstar)
 
 ;; AI
 (add-to-list 'load-path (expand-file-name "ai" funmacs-modules-dir))
