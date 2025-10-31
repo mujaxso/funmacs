@@ -94,29 +94,26 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(aidermacs apheleia async bind-key calibredb cape cl-generic cl-lib
-	       closql compat cond-let connection consult corfu
-	       csharp-mode dash dashboard dictionary doom-modeline
-	       edit-indirect editorconfig eglot eldoc elfeed
-	       elixir-ts-mode emacsql embark embark-consult erc esxml
-	       exec-path-from-shell external-completion f faceup
-	       flymake forge general ghub git-gutter gptel
-	       heex-ts-mode hl-todo ht htmlize idlwave impatient-mode
-	       jsonrpc language-detection less-css-mode let-alist
-	       ligature link llama lsp-mode lsp-tailwindcss lv magit
-	       magit-org-todos magit-prime magit-section magit-todos
-	       map marginalia markdown-mode markdown-preview-mode meow
-	       mmm-mode modus-themes nadvice nerd-icons
+   '(aidermacs apheleia async bind-key cape cl-generic cl-lib closql
+	       compat cond-let consult corfu csharp-mode dash
+	       dashboard dictionary doom-modeline edit-indirect
+	       editorconfig eglot eldoc elixir-ts-mode emacsql embark
+	       embark-consult erc exec-path-from-shell
+	       external-completion f faceup flymake forge general ghub
+	       git-gutter heex-ts-mode hl-todo ht idlwave jsonrpc
+	       less-css-mode let-alist ligature llama lsp-mode
+	       lsp-tailwindcss lv magit magit-org-todos magit-prime
+	       magit-section magit-todos map marginalia markdown-mode
+	       meow mmm-mode modus-themes nadvice nerd-icons
 	       nerd-icons-completion nerd-icons-corfu nerd-icons-dired
-	       nix-mode nov ntlm orderless org org-appear org-modern
-	       org-superstar pcre2el peg poly-org polymode project
-	       python reformatter request s seq shrface shrink-path
-	       simple-httpd so-long soap-client spinner ssass-mode
-	       svelte-mode svg tempel tempel-collection track-changes
-	       tramp transient treepy use-package valign verilog-mode
-	       vertico vterm vterm-toggle vue-html-mode vue-mode vundo
-	       wallabag wallpaper web-server websocket which-key
-	       window-tool-bar with-editor xref yaml zig-mode)))
+	       nix-mode ntlm orderless org org-modern pcre2el peg
+	       project python reformatter s seq shrink-path so-long
+	       soap-client spinner ssass-mode svelte-mode svg tempel
+	       tempel-collection track-changes tramp transient treepy
+	       use-package valign verilog-mode vertico vterm
+	       vterm-toggle vue-html-mode vue-mode vundo wallpaper
+	       which-key window-tool-bar with-editor xref yaml
+	       zig-mode)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
