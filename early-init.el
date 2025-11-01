@@ -77,9 +77,6 @@
 ;; Slim, symmetric fringes for minimal gutters
 (when (fboundp 'fringe-mode) (fringe-mode '(4 . 4))) ;; GUI-only
 
-
-
-
 ;; =============================================================================
 ;; FRAME AND WINDOW OPTIMIZATION
 ;; =============================================================================
@@ -102,9 +99,12 @@
 ;; Native compilation settings (Emacs 28+)
 (when (featurep 'native-compile)
   (setq native-comp-speed 2
-        native-comp-async-report-warnings-errors nil
+        native-comp-async-report-warnings-errors 'silent  ;; Suppress native-comp warnings
         native-comp-deferred-compilation t
         native-comp-async-jobs-number 4))
+
+;; Suppress compiler and bytecomp warnings from displaying
+(setq warning-suppress-types '((comp) (bytecomp)))
 
 ;; =============================================================================
 ;; PROCESS OPTIMIZATION

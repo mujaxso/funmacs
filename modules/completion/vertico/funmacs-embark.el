@@ -10,8 +10,8 @@
 
 
 (use-package embark-consult
-  :after (embark consult)
-  :ensure t)
+  :ensure t
+  :after (embark consult))
 
 (provide 'funmacs-embark)
 
