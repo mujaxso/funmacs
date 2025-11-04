@@ -5,6 +5,12 @@
 
 ;;; Code:
 
+;; Ensure VC Git backend is loaded
+(require 'vc-git)
+
+;; Make sure Git is in handled backends
+(add-to-list 'vc-handled-backends 'Git)
+
 (use-package magit
   :ensure t
   :defer t
