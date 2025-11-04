@@ -1,7 +1,7 @@
 ;;; funmacs-eldoc.el --- Eldoc and Eldoc-Mouse popup hover configuration -*- lexical-binding: t; -*-
 
 ;; Requires: eglot, eldoc, eldoc-mouse, posframe
-;; Provides: persistent hover documentation popups
+;; Provides: persistent hover documentation popups with mouse movement detection
 
 ;;; Code:
 
@@ -110,7 +110,7 @@
        (when funmacs/eldoc--debug
          (message "Error starting monitoring: %S" err)))))
 
-  ;; Enhanced error handler
+  ;; Enhanced error handler for eldoc-mouse
   (defun funmacs/eldoc-mouse-show-doc-at-advice (orig-fun &rest args)
     "Wrap eldoc-mouse-show-doc-at to catch errors."
     (condition-case err
