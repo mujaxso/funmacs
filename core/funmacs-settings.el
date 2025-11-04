@@ -31,6 +31,9 @@
   :config
   (exec-path-from-shell-initialize))
 
+;; enable mouse tracking
+(mouse-wheel-mode 1)
+(setq track-mouse t)
 
 (provide 'funmacs-settings)
 ;;; funmacs-settings.el ends here
