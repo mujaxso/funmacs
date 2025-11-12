@@ -7,7 +7,8 @@
 
 (use-package doom-modeline
   :ensure t
-  :after nerd-icons
+  :demand t
+  :after (nerd-icons all-the-icons)
   :init
   (setq doom-modeline-height 25
         doom-modeline-bar-width 3
@@ -33,7 +34,9 @@
         doom-modeline-workspace-name t
         doom-modeline-persp-name t)
   :config
-  (doom-modeline-mode 1))
+  (doom-modeline-mode 1)
+  ;; Force refresh of modeline
+  (force-mode-line-update t))
 
 (provide 'funmacs-modeline)
 

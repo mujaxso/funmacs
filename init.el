@@ -29,9 +29,10 @@
 ;; UI
 (add-to-list 'load-path (expand-file-name "ui" funmacs-modules-dir))
 (require 'funmacs-nerd-icons)
+(require 'funmacs-dashboard)
+;; Load modeline last to ensure all dependencies are available
 (require 'funmacs-modeline)
 (require 'funmacs-ligature)
-(require 'funmacs-dashboard)
 
 ;; ORG
 (add-to-list 'load-path (expand-file-name "org" funmacs-modules-dir))
