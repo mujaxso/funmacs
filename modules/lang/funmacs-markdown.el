@@ -29,16 +29,19 @@
   (define-key markdown-mode-map (kbd "C-c C-c p") #'markdown-preview)
   (define-key markdown-mode-map (kbd "C-c C-c e") #'markdown-export-and-preview))
 
-;; Setup function for clean markdown editing
+;; Setup function for clean markdown editing with live preview
 (defun funmacs-markdown-setup ()
-  "Setup markdown with clean, modern display."
+  "Setup markdown with clean, modern display and GitHub-style live preview."
   (setq-local line-spacing 0.1)
   (visual-line-mode 1)  ; Soft wrapping
   (valign-mode 1)       ; Clean table alignment
   
   ;; Enable clean display features
   (markdown-toggle-markup-hiding 1)
-  (markdown-toggle-url-hiding 1))
+  (markdown-toggle-url-hiding 1)
+  
+  ;; Enable live preview with eww for GitHub-like rendering
+  (markdown-live-preview-mode 1))
 
 ;; Valign for clean table alignment
 (use-package valign
