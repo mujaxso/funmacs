@@ -8,17 +8,16 @@
 (use-package doom-modeline
   :ensure t
   :demand t
-  :after (nerd-icons all-the-icons)
   :init
   (setq doom-modeline-height 25
         doom-modeline-bar-width 3
         doom-modeline-window-width-limit 85
         doom-modeline-minor-modes t
-        doom-modeline-icon t
-        doom-modeline-major-mode-icon t
-        doom-modeline-major-mode-color-icon t
-        doom-modeline-buffer-state-icon t
-        doom-modeline-buffer-modification-icon t
+        doom-modeline-icon nil
+        doom-modeline-major-mode-icon nil
+        doom-modeline-major-mode-color-icon nil
+        doom-modeline-buffer-state-icon nil
+        doom-modeline-buffer-modification-icon nil
         doom-modeline-unicode-fallback t
         doom-modeline-buffer-name t
         doom-modeline-project-detection 'project
@@ -34,9 +33,7 @@
         doom-modeline-workspace-name t
         doom-modeline-persp-name t)
   :config
-  (doom-modeline-mode 1)
-  ;; Force refresh of modeline
-  (force-mode-line-update t))
+  (doom-modeline-mode 1))
 
 (provide 'funmacs-modeline)
 
