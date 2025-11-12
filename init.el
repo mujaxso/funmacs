@@ -108,11 +108,11 @@
 	       magit-section magit-todos map marginalia markdown-mode
 	       meow mmm-mode modus-themes nadvice nerd-icons
 	       nerd-icons-completion nerd-icons-corfu nerd-icons-dired
-	       ntlm orderless org org-modern pcre2el peg posframe
-	       project python reformatter s seq shrink-path so-long
-	       soap-client spinner ssass-mode svelte-mode svg tempel
-	       tempel-collection track-changes tramp transient treepy
-	       use-package valign verilog-mode vertico vterm
+	       nix-ts-mode ntlm orderless org org-modern pcre2el peg
+	       posframe project python reformatter s seq shrink-path
+	       so-long soap-client spinner ssass-mode svelte-mode svg
+	       tempel tempel-collection track-changes tramp transient
+	       treepy use-package valign verilog-mode vertico vterm
 	       vterm-toggle vue-html-mode vue-mode vundo wallpaper
 	       which-key window-tool-bar with-editor xref yaml
 	       zig-mode)))
