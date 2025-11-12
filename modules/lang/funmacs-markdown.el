@@ -1,64 +1,133 @@
-;;; funmacs-markdown.el --- Enhanced Markdown with inline rendering -*- lexical-binding: t; -*-
+;;; funmacs-markdown.el --- Modern Markdown with same-buffer preview -*- lexical-binding: t; -*-
 
 ;;; Commentary:
-;; Markdown editing with org-mode-style inline rendering and GitHub-style HTML preview in Emacs buffer.
+;; Modern markdown editing with same-buffer preview, clean display, and context-aware symbol visibility.
 
 ;;; Code:
 
-;; Clean, modern markdown editing
 (use-package markdown-mode
   :ensure t
   :mode (("\\.md\\'" . gfm-mode)
          ("\\.markdown\\'" . gfm-mode)
          ("README\\.md\\'" . gfm-mode))
-  :hook ((markdown-mode . funmacs-markdown-setup)
-         (gfm-mode . funmacs-markdown-setup))
   :custom
-  ;; Cleaner display settings
-  (markdown-hide-markup t)  ; Hide formatting symbols for cleaner look
-  (markdown-hide-urls t)    ; Hide URLs behind link text
+  ;; Core markdown settings
+  (markdown-command "pandoc -f gfm -t html5")
   (markdown-fontify-code-blocks-natively t)
   (markdown-header-scaling t)
-  (markdown-header-scaling-values '(1.8 1.5 1.3 1.1 1.0 1.0))
   (markdown-asymmetric-header t)
-  ;; Built-in live preview settings
-  (markdown-split-window-direction 'right)
+  ;; Enable markup hiding by default for clean display
+  (markdown-hide-markup t)
+  (markdown-hide-urls t)
   :config
-  ;; Keybindings for preview
-  (define-key markdown-mode-map (kbd "C-c C-c l") #'markdown-live-preview-mode)
-  (define-key markdown-mode-map (kbd "C-c C-c p") #'markdown-preview)
-  (define-key markdown-mode-map (kbd "C-c C-c e") #'markdown-export-and-preview)
+  ;; Enable markup hiding by default in all markdown buffers
+  (add-hook 'markdown-mode-hook #'markdown-toggle-markup-hiding)
+  
+  ;; Context-aware symbol visibility - show markup on current line only
+  (defvar-local funmacs--markup-hidden-p nil
+    "Track if markup is currently hidden.")
+  
+  (defun funmacs/markdown-reveal-current-line ()
+    "Temporarily reveal markdown markup on the current line."
+    (when (and markdown-hide-markup (derived-mode-p 'markdown-mode))
+      (let ((inhibit-point-motion-hooks t)
+            (inhibit-modification-hooks t))
+        (remove-text-properties (line-beginning-position) 
+                               (line-end-position)
+                               '(invisible markdown-markup)))))
+  
+  (defun funmacs/markdown-hide-markup-except-current-line ()
+    "Hide markup except on the current line."
+    (when (and markdown-hide-markup (derived-mode-p 'markdown-mode))
+      (save-excursion
+        (save-restriction
+          (widen)
+          (let ((inhibit-point-motion-hooks t)
+                (inhibit-modification-hooks t)
+                (current-line (line-number-at-pos)))
+            (markdown-map-region 
+             (lambda ()
+               (when (/= (line-number-at-pos) current-line)
+                 (markdown-put-text-property (point) (markdown-line-end-position)
+                                            'invisible 'markdown-markup)))
+             (point-min) (point-max)))))))
+  
+  ;; Same-buffer preview using shr (eww rendering engine)
+  (defun funmacs/markdown-preview-same-buffer ()
+    "Render markdown as HTML in the same buffer using shr."
+    (interactive)
+    (unless (executable-find "pandoc")
+      (user-error "pandoc is required for markdown preview"))
+    
+    (let ((original-buffer (current-buffer))
+          (original-point (point))
+          (html-buffer (get-buffer-create "*markdown-preview*")))
+      ;; Convert markdown to HTML
+      (with-current-buffer html-buffer
+        (erase-buffer)
+        (insert (shell-command-to-string 
+                 (format "echo '%s' | pandoc -f gfm -t html5"
+                         (shell-quote-argument 
+                          (buffer-substring-no-properties (point-min) (point-max))))))
+        ;; Render HTML with shr
+        (shr-render-region (point-min) (point-max)))
+      
+      ;; Replace current buffer with preview
+      (let ((inhibit-read-only t))
+        (erase-buffer)
+        (insert-buffer-substring html-buffer)
+        (goto-char original-point)
+        (view-mode 1)
+        (message "Markdown preview - press 'q' to return to editing"))
+      
+      ;; Set up key to return to editing
+      (local-set-key (kbd "q") 
+                     (lambda () 
+                       (interactive)
+                       (view-mode -1)
+                       (erase-buffer)
+                       (insert-buffer-substring original-buffer)
+                       (goto-char original-point)))))
+  
+  ;; Toggle between markup hidden and visible
+  (defun funmacs/markdown-toggle-markup-context ()
+    "Toggle between hiding markup and showing it only on current line."
+    (interactive)
+    (if markdown-hide-markup
+        (progn
+          (markdown-toggle-markup-hiding -1)
+          (remove-hook 'post-command-hook #'funmacs/markdown-reveal-current-line t)
+          (remove-hook 'post-command-hook #'funmacs/markdown-hide-markup-except-current-line t)
+          (message "Markdown markup visible"))
+      (progn
+        (markdown-toggle-markup-hiding 1)
+        (add-hook 'post-command-hook #'funmacs/markdown-reveal-current-line nil t)
+        (add-hook 'post-command-hook #'funmacs/markdown-hide-markup-except-current-line nil t)
+        (message "Markdown markup hidden (context-aware)"))))
+  
+  ;; Keybindings
+  (define-key markdown-mode-map (kbd "C-c C-p") #'funmacs/markdown-preview-same-buffer)
+  (define-key markdown-mode-map (kbd "C-c C-h") #'funmacs/markdown-toggle-markup-context))
 
-  ;; Configure live preview to use GitHub styling
-  (setq markdown-live-preview-stylesheets
-        '("https://cdn.jsdelivr.net/npm/github-markdown-css@5.5.0/github-markdown-dark.min.css"))
-  (setq markdown-live-preview-default-mode 'eww)
-  (setq markdown-live-preview-auto-update t)
-  (setq markdown-live-preview-refresh-interval 1))
-
-;; Setup function for clean markdown editing with live preview
-(defun funmacs-markdown-setup ()
-  "Setup markdown with clean, modern display and GitHub-style live preview."
+;; Setup function for modern markdown editing
+(defun funmacs/markdown-setup ()
+  "Setup markdown with modern features and clean appearance."
   (setq-local line-spacing 0.1)
-  (visual-line-mode 1)  ; Soft wrapping
-  (valign-mode 1)       ; Clean table alignment
+  (visual-line-mode 1)  ; Soft wrapping for document-like feel
   
-  ;; Enable clean display features
-  (markdown-toggle-markup-hiding 1)
-  (markdown-toggle-url-hiding 1)
+  ;; Enable context-aware markup visibility
+  (when markdown-hide-markup
+    (add-hook 'post-command-hook #'funmacs/markdown-reveal-current-line nil t)
+    (add-hook 'post-command-hook #'funmacs/markdown-hide-markup-except-current-line nil t))
   
-  ;; Enable live preview with eww for GitHub-like rendering
-  (markdown-live-preview-mode 1))
+  ;; Modern appearance settings
+  (setq-local word-wrap t)
+  (setq-local fill-column 80))
 
-;; Valign for clean table alignment
-(use-package valign
-  :ensure t
-  :hook ((markdown-mode . valign-mode)
-         (gfm-mode . valign-mode))
-  :custom
-  (valign-fancy-bar t))
+(add-hook 'markdown-mode-hook #'funmacs/markdown-setup)
+(add-hook 'gfm-mode-hook #'funmacs/markdown-setup)
 
-;; Clean, modern heading faces
+;; Clean, modern heading faces for rendered appearance
 (custom-set-faces
  '(markdown-header-delimiter-face ((t (:foreground "#616161" :height 0.9))))
  '(markdown-header-face-1 ((t (:height 1.8 :weight extra-bold :foreground "#79c0ff"))))
