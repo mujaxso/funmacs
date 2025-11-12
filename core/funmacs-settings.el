@@ -1,39 +1,36 @@
 ;;; funmacs-settings.el --- Funmacs settings -*- lexical-binding: t; -*-
 
 ;;; Commentary:
-;; Basic settings: disable bell sound and enable line numbers.
+;; Basic settings using use-package
 
 ;;; Code:
 
-;; Disable bell sound
-(setq ring-bell-function 'ignore)
+(use-package emacs
+  :ensure nil
+  :custom
+  (ring-bell-function 'ignore)
+  (set-default-coding-systems 'utf-8)
+  (prefer-coding-system 'utf-8)
+  :config
+  (electric-pair-mode 1)
+  (global-auto-revert-mode 1)
+  (mouse-wheel-mode 1)
+  (setq track-mouse t))
 
-;; Enable relative line numbers in programming modes only
+;; Line numbers for programming modes
 (defun funmacs-enable-line-numbers ()
   "Enable relative line numbers for programming modes."
   (setq display-line-numbers-type 'relative)
   (display-line-numbers-mode 1))
 
-(add-hook 'prog-mode-hook #'funmacs-enable-line-numbers)
+(use-package prog-mode
+  :ensure nil
+  :hook (prog-mode . funmacs-enable-line-numbers))
 
-;; autocomplete paired brackets
-(electric-pair-mode 1)
-
-;; auto update file from disk
-(global-auto-revert-mode 1)
-
-;; UTF-8 as defaul
-(set-default-coding-systems 'utf-8)
-(prefer-coding-system 'utf-8)
-
-;; load path from shell
+;; Shell path setup
 (use-package exec-path-from-shell
   :config
   (exec-path-from-shell-initialize))
-
-;; enable mouse tracking
-(mouse-wheel-mode 1)
-(setq track-mouse t)
 
 (provide 'funmacs-settings)
 ;;; funmacs-settings.el ends here

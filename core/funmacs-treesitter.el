@@ -6,40 +6,43 @@
 
 ;;; Code:
 
-;; Fix git authentication issues on NixOS
-(setenv "GIT_ASKPASS" "")
-(setenv "SSH_ASKPASS" "")
-
-(setq treesit-language-source-alist
-      '(;; Core Languages - Official tree-sitter repos (100% verified)
-        (bash "https://github.com/tree-sitter/tree-sitter-bash")
-        (c "https://github.com/tree-sitter/tree-sitter-c")
-        (cpp "https://github.com/tree-sitter/tree-sitter-cpp")
-        (c-sharp "https://github.com/tree-sitter/tree-sitter-c-sharp")
-        (css "https://github.com/tree-sitter/tree-sitter-css")
-        (go "https://github.com/tree-sitter/tree-sitter-go")
-        (html "https://github.com/tree-sitter/tree-sitter-html")
-        (java "https://github.com/tree-sitter/tree-sitter-java")
-        (javascript "https://github.com/tree-sitter/tree-sitter-javascript")
-        (json "https://github.com/tree-sitter/tree-sitter-json")
-        (python "https://github.com/tree-sitter/tree-sitter-python")
-        (ruby "https://github.com/tree-sitter/tree-sitter-ruby")
-        (rust "https://github.com/tree-sitter/tree-sitter-rust")
-        (typescript "https://github.com/tree-sitter/tree-sitter-typescript" "master" "typescript/src")
-        (tsx "https://github.com/tree-sitter/tree-sitter-typescript" "master" "tsx/src")
-        
-        ;; tree-sitter-grammars organization (verified)
-        (lua "https://github.com/tree-sitter-grammars/tree-sitter-lua")
-        (markdown "https://github.com/tree-sitter-grammars/tree-sitter-markdown" "split_parser" "tree-sitter-markdown/src")
-        (toml "https://github.com/tree-sitter-grammars/tree-sitter-toml")
-        (yaml "https://github.com/tree-sitter-grammars/tree-sitter-yaml")
-        (zig "https://github.com/tree-sitter-grammars/tree-sitter-zig")
-        
-        ;; Community maintained (tested and working)
-        (cmake "https://github.com/uyha/tree-sitter-cmake")
-        (dockerfile "https://github.com/camdencheek/tree-sitter-dockerfile")
-        (elixir "https://github.com/elixir-lang/tree-sitter-elixir")
-        (nix "https://github.com/nix-community/tree-sitter-nix")))
+(use-package treesit
+  :ensure nil
+  :init
+  ;; Fix git authentication issues on NixOS
+  (setenv "GIT_ASKPASS" "")
+  (setenv "SSH_ASKPASS" "")
+  :custom
+  (treesit-language-source-alist
+   '(;; Core Languages - Official tree-sitter repos (100% verified)
+     (bash "https://github.com/tree-sitter/tree-sitter-bash")
+     (c "https://github.com/tree-sitter/tree-sitter-c")
+     (cpp "https://github.com/tree-sitter/tree-sitter-cpp")
+     (c-sharp "https://github.com/tree-sitter/tree-sitter-c-sharp")
+     (css "https://github.com/tree-sitter/tree-sitter-css")
+     (go "https://github.com/tree-sitter/tree-sitter-go")
+     (html "https://github.com/tree-sitter/tree-sitter-html")
+     (java "https://github.com/tree-sitter/tree-sitter-java")
+     (javascript "https://github.com/tree-sitter/tree-sitter-javascript")
+     (json "https://github.com/tree-sitter/tree-sitter-json")
+     (python "https://github.com/tree-sitter/tree-sitter-python")
+     (ruby "https://github.com/tree-sitter/tree-sitter-ruby")
+     (rust "https://github.com/tree-sitter/tree-sitter-rust")
+     (typescript "https://github.com/tree-sitter/tree-sitter-typescript" "master" "typescript/src")
+     (tsx "https://github.com/tree-sitter/tree-sitter-typescript" "master" "tsx/src")
+     
+     ;; tree-sitter-grammars organization (verified)
+     (lua "https://github.com/tree-sitter-grammars/tree-sitter-lua")
+     (markdown "https://github.com/tree-sitter-grammars/tree-sitter-markdown" "split_parser" "tree-sitter-markdown/src")
+     (toml "https://github.com/tree-sitter-grammars/tree-sitter-toml")
+     (yaml "https://github.com/tree-sitter-grammars/tree-sitter-yaml")
+     (zig "https://github.com/tree-sitter-grammars/tree-sitter-zig")
+     
+     ;; Community maintained (tested and working)
+     (cmake "https://github.com/uyha/tree-sitter-cmake")
+     (dockerfile "https://github.com/camdencheek/tree-sitter-dockerfile")
+     (elixir "https://github.com/elixir-lang/tree-sitter-elixir")
+     (nix "https://github.com/nix-community/tree-sitter-nix")))
 
 (defun funmacs--compiler-available-p () 
   "Check if a C/C++ compiler is available in PATH."
