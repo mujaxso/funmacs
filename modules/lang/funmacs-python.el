@@ -7,8 +7,8 @@
 
 (use-package python
   :ensure nil
-  :mode (("\\.py\\'" . python-ts-mode)))
-(add-hook 'python-ts-mode-hook #'eglot-ensure)
+  :mode (("\\.py\\'" . python-ts-mode))
+  :hook (python-ts-mode . eglot-ensure))
 
 (provide 'funmacs-python)
 
