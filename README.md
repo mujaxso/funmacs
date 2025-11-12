@@ -210,7 +210,8 @@ Each language module includes LSP integration, formatting, syntax highlighting, 
 
 ## 🚀 Installation
 
-Clone directly into your Emacs configuration directory:
+Clone directly into your Emacs configuration directory
+Wait until installation finish it may take sometime:
 
 ```bash
 git clone https://github.com/mujaxso/funmacs.git ~/.config/emacs
