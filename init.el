@@ -28,8 +28,8 @@
 
 ;; UI
 (add-to-list 'load-path (expand-file-name "ui" funmacs-modules-dir))
-(require 'funmacs-modeline)
 (require 'funmacs-nerd-icons)
+(require 'funmacs-modeline)
 (require 'funmacs-ligature)
 (require 'funmacs-dashboard)
 

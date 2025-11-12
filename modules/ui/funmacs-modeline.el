@@ -7,6 +7,31 @@
 
 (use-package doom-modeline
   :ensure t
+  :after nerd-icons
+  :init
+  (setq doom-modeline-height 25
+        doom-modeline-bar-width 3
+        doom-modeline-window-width-limit 85
+        doom-modeline-minor-modes t
+        doom-modeline-icon t
+        doom-modeline-major-mode-icon t
+        doom-modeline-major-mode-color-icon t
+        doom-modeline-buffer-state-icon t
+        doom-modeline-buffer-modification-icon t
+        doom-modeline-unicode-fallback t
+        doom-modeline-buffer-name t
+        doom-modeline-project-detection 'project
+        doom-modeline-persp-name t
+        doom-modeline-display-default-persp-name nil
+        doom-modeline-lsp t
+        doom-modeline-github nil
+        doom-modeline-gnus t
+        doom-modeline-mu4e t
+        doom-modeline-irc t
+        doom-modeline-checker-simple-format t
+        doom-modeline-vcs-max-length 12
+        doom-modeline-workspace-name t
+        doom-modeline-persp-name t)
   :config
   (doom-modeline-mode 1))
 
