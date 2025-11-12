@@ -27,7 +27,14 @@
   ;; Keybindings for preview
   (define-key markdown-mode-map (kbd "C-c C-c l") #'markdown-live-preview-mode)
   (define-key markdown-mode-map (kbd "C-c C-c p") #'markdown-preview)
-  (define-key markdown-mode-map (kbd "C-c C-c e") #'markdown-export-and-preview))
+  (define-key markdown-mode-map (kbd "C-c C-c e") #'markdown-export-and-preview)
+
+  ;; Configure live preview to use GitHub styling
+  (setq markdown-live-preview-stylesheets
+        '("https://cdn.jsdelivr.net/npm/github-markdown-css@5.5.0/github-markdown-dark.min.css"))
+  (setq markdown-live-preview-default-mode 'eww)
+  (setq markdown-live-preview-auto-update t)
+  (setq markdown-live-preview-refresh-interval 1))
 
 ;; Setup function for clean markdown editing with live preview
 (defun funmacs-markdown-setup ()
