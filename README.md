@@ -39,7 +39,7 @@
 
 > **Funmacs** is a **modern, production-ready Emacs configuration** built for developers who want a powerful yet elegant experience — **no yak-shaving required.**  
 >  
-> It’s built around a modular architecture, integrates **LSP**, **Tree-sitter**, and **Corfu-based completion**, and delivers a polished UX that just works out of the box.
+> It's built around a modular architecture, integrates **LSP**, **Tree-sitter**, **Corfu-based completion**, and features **modal editing with Meow**. The configuration includes **persistent hover documentation** that stays visible until you move away, and delivers a polished UX that just works out of the box.
 
 ---
 
