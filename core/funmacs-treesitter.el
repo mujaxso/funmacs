@@ -43,8 +43,62 @@
      (dockerfile "https://github.com/camdencheek/tree-sitter-dockerfile")
      (elixir "https://github.com/elixir-lang/tree-sitter-elixir")
      (nix "https://github.com/nix-community/tree-sitter-nix")))
+  :config
+  (setq major-mode-remap-alist
+        '(;; System & Shell
+          (bash-mode . bash-ts-mode)
+          (sh-mode . bash-ts-mode)
+          
+          ;; C Family
+          (c-mode . c-ts-mode)
+          (c++-mode . c++-ts-mode)
+          (c-sharp-mode . c-sharp-ts-mode)
+          (csharp-mode . csharp-ts-mode)
+          
+          ;; Web Development
+          (css-mode . css-ts-mode)
+          (html-mode . html-ts-mode)
+          (mhtml-mode . html-ts-mode)
+          (javascript-mode . js-ts-mode)
+          (js-mode . js-ts-mode)
+          (js2-mode . js-ts-mode)
+          (typescript-mode . typescript-ts-mode)
+          (json-mode . json-ts-mode)
+          (yaml-mode . yaml-ts-mode)
+          (toml-mode . toml-ts-mode)
+          (conf-toml-mode . toml-ts-mode)
+          
+          ;; Scripting Languages
+          (python-mode . python-ts-mode)
+          (ruby-mode . ruby-ts-mode)
+          (enh-ruby-mode . ruby-ts-mode)
+          (lua-mode . lua-ts-mode)
+          
+          ;; Systems Programming
+          (rust-mode . rust-ts-mode)
+          (rustic-mode . rust-ts-mode)
+          (go-mode . go-ts-mode)
+          (zig-mode . zig-ts-mode)
+          
+          ;; Functional Languages
+          (elixir-mode . elixir-ts-mode)
+          
+          ;; JVM Languages
+          (java-mode . java-ts-mode)
+          
+          ;; Build Systems & Config
+          (cmake-mode . cmake-ts-mode)
+          (dockerfile-mode . dockerfile-ts-mode)
+          ;;(nix-mode . nix-ts-mode)
+          
+          ;; Documentation & Markup
+          ;;(markdown-mode . markdown-ts-mode)
+          ;;(gfm-mode . markdown-ts-mode)
+          
+          ;; Other
+          (sql-mode . sql-ts-mode)))
 
-(defun funmacs--compiler-available-p () 
+  (defun funmacs--compiler-available-p () 
   "Check if a C/C++ compiler is available in PATH."
   (or (executable-find "gcc") 
       (executable-find "clang") 
