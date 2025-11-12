@@ -20,7 +20,7 @@
 (require 'funmacs-whichkey)
 (require 'funmacs-vundo)
 (require 'funmacs-eglot)
-(require 'funmacs-eat)
+;;(require 'funmacs-eat)
 (require 'funmacs-vterm)
 (require 'funmacs-meow)
 (require 'funmacs-leader)
@@ -95,17 +95,36 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(aidermacs apheleia cape corfu dashboard doom-modeline eat eldoc-box
-	       eldoc-mouse embark-consult exec-path-from-shell forge
-	       general git-gutter ligature lsp-tailwindcss
-	       magit-org-todos magit-prime magit-todos marginalia meow
-	       modus-themes nerd-icons-completion nerd-icons-corfu
-	       nerd-icons-dired nix-mode orderless org-modern
-	       svelte-mode tempel-collection valign vertico
-	       vterm-toggle vue-mode vundo zig-mode)))
+   '(aidermacs apheleia async bind-key cape cl-generic cl-lib closql
+	       compat cond-let consult corfu csharp-mode dash
+	       dashboard dictionary doom-modeline edit-indirect
+	       editorconfig eglot eldoc eldoc-box eldoc-mouse
+	       elixir-ts-mode emacsql embark embark-consult erc
+	       exec-path-from-shell external-completion f faceup
+	       flymake forge general ghub git-gutter heex-ts-mode
+	       hl-todo ht idlwave jsonrpc less-css-mode let-alist
+	       ligature llama lsp-mode lsp-tailwindcss lv magit
+	       magit-org-todos magit-prime magit-section magit-todos
+	       map marginalia markdown-mode meow mmm-mode modus-themes
+	       nadvice nerd-icons nerd-icons-completion
+	       nerd-icons-corfu nerd-icons-dired nix-mode ntlm
+	       orderless org org-modern pcre2el peg posframe project
+	       python reformatter s seq shrink-path so-long
+	       soap-client spinner ssass-mode svelte-mode svg tempel
+	       tempel-collection track-changes tramp transient treepy
+	       use-package valign verilog-mode vertico vterm
+	       vterm-toggle vue-html-mode vue-mode vundo wallpaper
+	       which-key window-tool-bar with-editor xref yaml
+	       zig-mode)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(markdown-header-delimiter-face ((t (:foreground "#616161" :height 0.9))))
+ '(markdown-header-face-1 ((t (:height 1.8 :weight extra-bold :foreground "#79c0ff"))))
+ '(markdown-header-face-2 ((t (:height 1.4 :weight extra-bold :foreground "#79c0ff"))))
+ '(markdown-header-face-3 ((t (:height 1.2 :weight extra-bold :foreground "#79c0ff"))))
+ '(markdown-header-face-4 ((t (:height 1.15 :weight bold :foreground "#79c0ff"))))
+ '(markdown-header-face-5 ((t (:height 1.1 :weight bold :foreground "#79c0ff"))))
+ '(markdown-header-face-6 ((t (:height 1.05 :weight semi-bold :foreground "#79c0ff")))))
