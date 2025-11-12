@@ -50,12 +50,12 @@
 (add-to-list 'load-path (expand-file-name "completion" funmacs-modules-dir))
 (require 'funmacs-format)
 
-;; Vertico comletion
+;; Vertico completion
 (add-to-list 'load-path (expand-file-name "completion/vertico" funmacs-modules-dir))
 (require 'funmacs-vertico)
 (require 'funmacs-orderless)
-(require 'funmacs-embark)
-(require 'funmacs-consult)
+(require 'funmacs-consult)   ;; Load consult before embark
+(require 'funmacs-embark)    ;; Now embark-consult will load properly
 (require 'funmacs-marginalia)
 
 ;; Corfu completion

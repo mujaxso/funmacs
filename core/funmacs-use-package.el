@@ -12,6 +12,11 @@
 (setq use-package-always-ensure t)
 (setq use-package-always-defer t)
 
+;; Load general.el to prevent native compilation warnings
+(use-package general
+  :ensure t
+  :defer t)
+
 (provide 'funmacs-use-package)
 
 ;;; funmacs-use-package.el ends here
