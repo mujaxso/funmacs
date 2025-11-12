@@ -194,7 +194,7 @@ If SILENT is non-nil, only show messages when actually installing or on errors."
                    (ignore-errors (funmacs-install-missing-grammars nil)))
                  ;; Silent check when all installed
                  (when (funmacs--all-grammars-installed-p)
-                   (ignore-errors (funmacs-install-missing-grammars t))))))))
+                   (ignore-errors (funmacs-install-missing-grammars t)))))))))
 
 (provide 'funmacs-treesitter)
 
