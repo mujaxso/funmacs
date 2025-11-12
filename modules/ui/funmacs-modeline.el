@@ -6,7 +6,9 @@
 ;;; code
 
 (use-package doom-modeline
-  :init (doom-modeline-mode 1))
+  :ensure t
+  :config
+  (doom-modeline-mode 1))
 
 (provide 'funmacs-modeline)
 

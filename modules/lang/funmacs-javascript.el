@@ -5,8 +5,10 @@
 
 ;;; code
 
-(add-to-list 'auto-mode-alist '("\\.js\\'" . js-ts-mode))
-(add-hook 'js-ts-mode-hook #'eglot-ensure)
+(use-package js
+  :ensure nil
+  :mode ("\\.js\\'" . js-ts-mode)
+  :hook (js-ts-mode . eglot-ensure))
 
 (provide 'funmacs-javascript)
 
