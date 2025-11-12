@@ -33,7 +33,26 @@
         doom-modeline-workspace-name t
         doom-modeline-persp-name t)
   :config
-  (doom-modeline-mode 1))
+  (doom-modeline-mode 1)
+  
+  ;; Fallback to ensure modeline is visible
+  (unless mode-line-format
+    (setq mode-line-format 
+          '("%e" 
+            mode-line-front-space
+            mode-line-mule-info
+            mode-line-client
+            mode-line-modified
+            mode-line-remote
+            mode-line-frame-identification
+            mode-line-buffer-identification
+            "   "
+            mode-line-position
+            (vc-mode vc-mode)
+            "  "
+            mode-line-modes
+            mode-line-misc-info
+            mode-line-end-spaces))))
 
 (provide 'funmacs-modeline)
 
