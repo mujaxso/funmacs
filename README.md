@@ -78,6 +78,9 @@
 - ⚙️ **Modern Toolchain** — Tree-sitter, Eglot, and Corfu baked in.  
 - 🎯 **Optimized for Productivity** — Smart defaults and minimal distractions.  
 - 🧘 **Clean Aesthetic** — A distraction-free, beautiful interface.
+- 🖱️ **Smart Documentation** — Persistent hover docs that stay until you move away
+- ⌨️ **Modal Editing** — Meow keybindings for efficient text manipulation
+- 🎯 **AI Integration** — Aider support for AI pair programming
 
 ---
 
@@ -98,6 +101,10 @@
 - 🧭 **Vundo** — tree-structured undo/redo history.  
 - 🔇 Bell sound disabled (no more beeps!).  
 - 💨 Smooth scrolling and consistent indentation defaults.
+- 🖱️ **Smart Hover Documentation** — Eldoc popups stay visible until mouse moves away
+- ⌨️ **Modal Editing** — Meow keybindings with leader key (SPC) support
+- 📝 **Template System** — Tempel snippets for rapid code generation
+- 🎯 **Persistent Popups** — Custom eldoc-mouse tracking for uninterrupted documentation
 
 ---
 
@@ -110,7 +117,10 @@
 | **Corfu** | Pop-up completion menu for inline suggestions. |
 | **Embark** | Contextual actions for completion items. |
 | **Cape** | Adds additional completion sources (symbols, files, etc.). |
-| **Nerd Icons Corfu** | Displays icons alongside completion candidates. |
+| **Consult** | Enhanced search and navigation commands. |
+| **Marginalia** | Rich annotations for completion candidates. |
+| **Nerd Icons** | Beautiful icons throughout the completion UI. |
+| **Tempel** | Lightweight template/snippet system. |
 
 > 🧩 *The result is a refined, modern completion experience that rivals VS Code or JetBrains IDEs—without leaving Emacs.*
 
@@ -122,8 +132,12 @@
 - 🌳 **Tree-sitter** – Modern syntax highlighting and structural parsing.  
 - ⚙️ **Automatic grammar installation** for supported languages.  
 - ✨ **Apheleia** – Asynchronous and fast code formatting.  
-- 📦 Language-specific **template snippets** included by default.  
+- 📦 **Template System** – Tempel snippets for rapid code generation.  
 - 🧠 Intelligent indentation and syntax-aware editing.
+- 🖱️ **Smart Documentation** – Persistent hover popups with custom mouse tracking
+- 🎯 **AI Pair Programming** – Aider integration for AI-assisted development
+- 📚 **Enhanced Org-mode** – Complete task management and note-taking system
+- 🔄 **Git Integration** – Magit with todos and project management features
 
 ---
 
@@ -201,6 +215,21 @@ Clone directly into your Emacs configuration directory:
 ```bash
 git clone https://github.com/mujaxso/funmacs.git ~/.config/emacs
 ```
+
+### First-Time Setup
+
+Funmacs will automatically:
+- Install all required packages
+- Set up tree-sitter grammars for supported languages
+- Configure LSP servers via Eglot
+- Set up completion system (Vertico + Corfu)
+
+### Key Features Available Immediately
+
+- **Modal Editing**: Press `ESC` to enter normal mode, use `SPC` as leader key
+- **Smart Documentation**: Hover over symbols to see persistent documentation
+- **AI Integration**: Configure API keys for Aider (see modules/ai/funmacs-aidermacs.el)
+- **Org-mode Productivity**: Full task management system with capture templates
 
 ## 💖 Support
 
