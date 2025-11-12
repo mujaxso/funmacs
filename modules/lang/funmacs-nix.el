@@ -8,7 +8,9 @@
 (use-package nix-ts-mode
   :ensure nil
   :mode ("\\.nix\\'" . nix-ts-mode)
-  :hook (nix-ts-mode . eglot-ensure))
+  :hook (nix-ts-mode . (lambda ()
+                         (setq-local treesit-font-lock-level 4)
+                         (eglot-ensure))))
 
 (provide 'funmacs-nix)
 
