@@ -19,7 +19,9 @@
   :ensure t
   :hook (prog-mode . eldoc-mouse-mode)
   :custom
-  (eldoc-mouse-hover-delay 0.15))
+  (eldoc-mouse-hover-delay 0.5)
+  (eldoc-mouse-linger-time 2.0)
+  (eldoc-mouse-only-when-focused nil))
 
 (provide 'funmacs-eldoc)
 ;;; funmacs-eldoc.el ends here
