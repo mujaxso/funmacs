@@ -1,12 +1,14 @@
-;;; funmacs-react.el -*- lexical-binding: t; -*-
+;;; funmacs-react.el --- React configuration -*- lexical-binding: t; -*-
 
 ;;; Commentary:
-;; react-mode settings
+;; React editing configuration with Tree-sitter and Eglot.
 
-;;; code
+;;; Code:
 
-(add-to-list 'auto-mode-alist '("\\.tsx\\'" . tsx-ts-mode))
-(add-hook 'tsx-ts-mode-hook #'eglot-ensure)
+(use-package tsx-ts-mode
+  :ensure nil
+  :mode ("\\.tsx\\'" . tsx-ts-mode)
+  :hook (tsx-ts-mode . eglot-ensure))
 
 (provide 'funmacs-react)
 

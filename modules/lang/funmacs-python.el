@@ -1,13 +1,14 @@
-;;; funmacs-python.el -*- lexical-binding: t; -*-
+;;; funmacs-python.el --- Python configuration -*- lexical-binding: t; -*-
 
 ;;; Commentary:
-;; python-mode settings
+;; Python editing configuration with Tree-sitter and Eglot.
 
-;;; code
+;;; Code:
 
-(use-package python
+(use-package python-ts-mode
   :ensure nil
-  :mode (("\\.py\\'" . python-ts-mode))
+  :mode (("\\.py\\'" . python-ts-mode)
+         ("\\.pyi\\'" . python-ts-mode))
   :hook (python-ts-mode . eglot-ensure))
 
 (provide 'funmacs-python)

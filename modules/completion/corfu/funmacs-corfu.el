@@ -1,6 +1,6 @@
 ;;; funmacs-corfu.el --- Corfu -*- lexical-binding: t; -*-
 
-;; Requires: corfu, eglot, eldoc, eldoc-mouse, posframe, nerd-icons-completion
+;; Requires: corfu, eglot, eldoc, eldoc-mouse, posframe
 
 ;;; Code:
 
@@ -23,10 +23,6 @@
   (corfu-history-mode)
   (corfu-indexed-mode)
   (corfu-popupinfo-mode)
-  (use-package nerd-icons-completion
-    :ensure t
-    :config
-    (nerd-icons-completion-mode 1))
   :bind
   (:map corfu-map
 	("C-n" . corfu-next)

@@ -99,7 +99,7 @@
   (when (and (or (eq major-mode 'markdown-mode)
                  (eq major-mode 'gfm-mode))
              (get-buffer "*Markdown Preview*"))
-    (funmacs-markdown-preview-buffer)))
+    (funmacs-markdown-preview-refresh)))
 
 (add-hook 'after-save-hook #'funmacs-markdown-auto-refresh-preview)
 

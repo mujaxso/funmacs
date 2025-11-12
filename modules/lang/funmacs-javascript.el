@@ -1,13 +1,14 @@
-;;; funmacs-javascript.el -*- lexical-binding: t; -*-
+;;; funmacs-javascript.el --- JavaScript configuration -*- lexical-binding: t; -*-
 
 ;;; Commentary:
-;; javascript-mode settings
+;; JavaScript editing configuration with Tree-sitter and Eglot.
 
-;;; code
+;;; Code:
 
-(use-package js
+(use-package js-ts-mode
   :ensure nil
-  :mode ("\\.js\\'" . js-ts-mode)
+  :mode (("\\.js\\'" . js-ts-mode)
+         ("\\.mjs\\'" . js-ts-mode))
   :hook (js-ts-mode . eglot-ensure))
 
 (provide 'funmacs-javascript)

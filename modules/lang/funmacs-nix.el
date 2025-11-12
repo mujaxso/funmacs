@@ -1,17 +1,14 @@
-;;; funmacs-nix.el -*- lexical-binding: t; -*-
+;;; funmacs-nix.el --- Nix configuration -*- lexical-binding: t; -*-
 
 ;;; Commentary:
-;; nix-mode settings
+;; Nix editing configuration with Tree-sitter and Eglot.
 
-;;; code
+;;; Code:
 
-(use-package nix-mode
-  :ensure t
-  :mode ("\\.nix\\'" . nix-mode))
-(add-hook 'nix-mode-hook #'eglot-ensure)
-
-(declare-function nix-read-attr "ext:nix-mode")
-(declare-function nix-read-file "ext:nix-mode")
+(use-package nix-ts-mode
+  :ensure nil
+  :mode ("\\.nix\\'" . nix-ts-mode)
+  :hook (nix-ts-mode . eglot-ensure))
 
 (provide 'funmacs-nix)
 

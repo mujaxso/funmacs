@@ -6,6 +6,8 @@
 
 ;;; Code:
 
+(require 'cl-lib)
+
 (use-package treesit
   :ensure nil
   :init
