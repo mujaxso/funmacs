@@ -7,17 +7,16 @@
 
 (use-package doom-modeline
   :ensure t
-  :after nerd-icons
   :init
   (setq doom-modeline-height 25
         doom-modeline-bar-width 3
         doom-modeline-window-width-limit 85
         doom-modeline-minor-modes t
-        doom-modeline-icon t
-        doom-modeline-major-mode-icon t
-        doom-modeline-major-mode-color-icon t
-        doom-modeline-buffer-state-icon t
-        doom-modeline-buffer-modification-icon t
+        doom-modeline-icon nil  ; Disable icons initially to avoid dependency issues
+        doom-modeline-major-mode-icon nil
+        doom-modeline-major-mode-color-icon nil
+        doom-modeline-buffer-state-icon nil
+        doom-modeline-buffer-modification-icon nil
         doom-modeline-unicode-fallback t
         doom-modeline-buffer-name t
         doom-modeline-project-detection 'project
@@ -33,26 +32,7 @@
         doom-modeline-workspace-name t
         doom-modeline-persp-name t)
   :config
-  (doom-modeline-mode 1)
-  
-  ;; Fallback to ensure modeline is visible
-  (unless mode-line-format
-    (setq mode-line-format 
-          '("%e" 
-            mode-line-front-space
-            mode-line-mule-info
-            mode-line-client
-            mode-line-modified
-            mode-line-remote
-            mode-line-frame-identification
-            mode-line-buffer-identification
-            "   "
-            mode-line-position
-            (vc-mode vc-mode)
-            "  "
-            mode-line-modes
-            mode-line-misc-info
-            mode-line-end-spaces))))
+  (doom-modeline-mode 1))
 
 (provide 'funmacs-modeline)
 

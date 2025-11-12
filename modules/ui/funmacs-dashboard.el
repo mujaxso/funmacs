@@ -8,7 +8,6 @@
 (use-package dashboard
   :ensure t
   :demand t
-  :after nerd-icons
   :config
   (dashboard-setup-startup-hook)
   ;; disable white spaces
@@ -42,8 +41,8 @@
   (setq dashboard-set-file-icons t)
   ;; display icons on both GUI and terminal
   (setq dashboard-display-icons-p t)
-  ;; use `nerd-icons' package
-  (setq dashboard-icon-type 'nerd-icons)
+  ;; use `nerd-icons' package (disabled for now to avoid dependency issues)
+  (setq dashboard-icon-type nil)
   ;; To customize which widgets are displayed
   (setq dashboard-items '((recents  . 5)
                           (bookmarks . 5)
@@ -52,31 +51,16 @@
                           (registers . 5)))
   ;; set naviagtion banner.
   (setq dashboard-set-navigator t)
-  ;; navigation buttons.
+  ;; navigation buttons (without icons for now)
   (setq dashboard-navigator-buttons
-        `(( ;; homepage navigation tag.
-           (,(nerd-icons-faicon "nf-fa-home" :height 1.1 :v-adjust 0.0)
-            "Homepage"
-            "Browse Homepage"
+        `((("🏠" "Homepage" "Browse Homepage" 
             (lambda (&rest _) (browse-url "https://funmacs.mujaxso.com")))
-           ;; github navigation tag.
-           (,(nerd-icons-faicon "nf-fa-github" :height 1.1 :v-adjust 0.0)
-            "GitHub"
-            "Browse GitHub"
+           ("🐙" "GitHub" "Browse GitHub" 
             (lambda (&rest _) (browse-url "https://github.com/mujaxso/funmacs")))
-           ;; twitter navigation tag.
-           (,(nerd-icons-faicon "nf-fa-twitter" :height 1.1 :v-adjust 0.0)
-            "Twitter"
-            "Browse Twitter"
+           ("🐦" "Twitter" "Browse Twitter" 
             (lambda (&rest _) (browse-url "https://www.twitter.com/mujaxso")))
-           ;; linkedin navigation tag.
-           (,(nerd-icons-faicon "nf-fa-linkedin" :height 1.1 :v-adjust 0.0)
-            "LinkedIn"
-            "Browse LinkedIn"
-            (lambda (&rest _) (browse-url "https://www.linkedin.com/in/mujaxso")))
-           )
-          )
-        )
+           ("💼" "LinkedIn" "Browse LinkedIn" 
+            (lambda (&rest _) (browse-url "https://www.linkedin.com/in/mujaxso"))))))
   )
 
 (provide 'funmacs-dashboard)
