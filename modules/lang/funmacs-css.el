@@ -1,12 +1,14 @@
-;;; funmacs-css.el -*- lexical-binding: t; -*-
+;;; funmacs-css.el --- CSS configuration -*- lexical-binding: t; -*-
 
 ;;; Commentary:
-;; css-mode settings
+;; CSS editing configuration with Tree-sitter and Eglot.
 
-;;; code
+;;; Code:
 
-(add-to-list 'auto-mode-alist '("\\.css\\'" . css-ts-mode))
-(add-hook 'css-ts-mode-hook #'eglot-ensure)
+(use-package css-ts-mode
+  :ensure nil
+  :mode ("\\.css\\'" . css-ts-mode)
+  :hook (css-ts-mode . eglot-ensure))
 
 (provide 'funmacs-css)
 

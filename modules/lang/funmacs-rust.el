@@ -1,12 +1,14 @@
-;;; funmacs-rust.el -*- lexical-binding: t; -*-
+;;; funmacs-rust.el --- Rust configuration -*- lexical-binding: t; -*-
 
 ;;; Commentary:
-;; rust-mode settings
+;; Rust editing configuration with Tree-sitter and Eglot.
 
-;;; code
+;;; Code:
 
-(add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-ts-mode))
-(add-hook 'rust-ts-mode-hook #'eglot-ensure)
+(use-package rust-ts-mode
+  :ensure nil
+  :mode ("\\.rs\\'" . rust-ts-mode)
+  :hook (rust-ts-mode . eglot-ensure))
 
 (provide 'funmacs-rust)
 

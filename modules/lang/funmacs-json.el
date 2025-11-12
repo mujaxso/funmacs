@@ -1,13 +1,15 @@
-;;; funmacs-json.el -*- lexical-binding: t; -*-
+;;; funmacs-json.el --- JSON configuration -*- lexical-binding: t; -*-
 
 ;;; Commentary:
-;; json-mode settings
+;; JSON editing configuration with Tree-sitter and Eglot.
 
-;;; code
+;;; Code:
 
-(add-to-list 'auto-mode-alist '("\\.json\\'" . json-ts-mode))
-(add-hook 'json-ts-mode-hook #'eglot-ensure)
+(use-package json-ts-mode
+  :ensure nil
+  :mode ("\\.json\\'" . json-ts-mode)
+  :hook (json-ts-mode . eglot-ensure))
 
 (provide 'funmacs-json)
 
-;;; funamcs-json.el ends here
+;;; funmacs-json.el ends here

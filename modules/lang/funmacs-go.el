@@ -1,12 +1,14 @@
-;;; funmacs-go.el -*- lexical-binding: t; -*-
+;;; funmacs-go.el --- Go configuration -*- lexical-binding: t; -*-
 
 ;;; Commentary:
-;; go-mode settings
+;; Go editing configuration with Tree-sitter and Eglot.
 
-;;; code
+;;; Code:
 
-(add-to-list 'auto-mode-alist '("\\.go\\'" . go-ts-mode))
-(add-hook 'go-ts-mode-hook #'eglot-ensure)
+(use-package go-ts-mode
+  :ensure nil
+  :mode ("\\.go\\'" . go-ts-mode)
+  :hook (go-ts-mode . eglot-ensure))
 
 (provide 'funmacs-go)
 

@@ -1,12 +1,14 @@
-;;; funmacs-html.el -*- lexical-binding: t; -*-
+;;; funmacs-html.el --- HTML configuration -*- lexical-binding: t; -*-
 
 ;;; Commentary:
-;; html-mode settings
+;; HTML editing configuration with Tree-sitter and Eglot.
 
-;;; code
+;;; Code:
 
-(add-to-list 'auto-mode-alist '("\\.html?\\'" . html-ts-mode))
-(add-hook 'html-ts-mode-hook #'eglot-ensure)
+(use-package html-ts-mode
+  :ensure nil
+  :mode ("\\.html?\\'" . html-ts-mode)
+  :hook (html-ts-mode . eglot-ensure))
 
 (provide 'funmacs-html)
 
