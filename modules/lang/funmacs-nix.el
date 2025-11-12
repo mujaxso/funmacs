@@ -6,7 +6,7 @@
 ;;; Code:
 
 (use-package nix-ts-mode
-  :ensure nil
+  :ensure t
   :mode ("\\.nix\\'" . nix-ts-mode)
   :hook (nix-ts-mode . (lambda ()
                          (setq-local treesit-font-lock-level 4)
