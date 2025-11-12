@@ -11,7 +11,6 @@
 ;; =============================================================================
 
 ;; Maximize GC threshold during startup to prevent collections
-;; This can reduce startup time by 50% or more
 (setq gc-cons-threshold most-positive-fixnum
       gc-cons-percentage 0.5)
 
@@ -40,10 +39,10 @@
 (push '(vertical-scroll-bars) default-frame-alist)
 (push '(horizontal-scroll-bars) default-frame-alist)
 
-;; Early GUI toggles must be guarded for batch/tty
-(when (fboundp 'menu-bar-mode) (menu-bar-mode -1))   ;; safe in tty too [web:49]
-(when (fboundp 'tool-bar-mode) (tool-bar-mode -1))   ;; safe in GUI only [web:49]
-(when (fboundp 'scroll-bar-mode) (scroll-bar-mode -1)) ;; GUI-only
+;; Early GUI toggles
+(when (fboundp 'menu-bar-mode) (menu-bar-mode -1))
+(when (fboundp 'tool-bar-mode) (tool-bar-mode -1))
+(when (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 
 ;; Alternative method for Emacs 27+
 (setq default-frame-alist
@@ -65,29 +64,26 @@
       inhibit-default-init t
       initial-scratch-message nil)
 
-;; Hairline dividers, theme-colored, no extra padding
+;; Window and frame settings
 (setq window-divider-default-right-width 2
       window-divider-default-bottom-width 2
       window-divider-default-places t)
 (window-divider-mode 1)
 
-;; No frame padding for maximum content area
 (modify-all-frames-parameters '((internal-border-width . 0)))
 
-;; Slim, symmetric fringes for minimal gutters
-(when (fboundp 'fringe-mode) (fringe-mode '(4 . 4))) ;; GUI-only
+;; Fringe settings
+(when (fboundp 'fringe-mode) (fringe-mode '(4 . 4)))
 
 ;; =============================================================================
 ;; FRAME AND WINDOW OPTIMIZATION
 ;; =============================================================================
 
-;; Prevent frame resizing when adjusting fonts
 (setq frame-resize-pixelwise t
       frame-inhibit-implied-resize t
       frame-title-format '("%b - Emacs")
       icon-title-format frame-title-format)
 
-;; Window divider settings
 (setq window-divider-default-bottom-width 1
       window-divider-default-places t
       window-divider-default-right-width 1)
@@ -96,28 +92,25 @@
 ;; NATIVE COMPILATION
 ;; =============================================================================
 
-;; Native compilation settings (Emacs 28+)
 (when (featurep 'native-compile)
   (setq native-comp-speed 2
-        native-comp-async-report-warnings-errors 'silent  ;; Suppress native-comp warnings
+        native-comp-async-report-warnings-errors 'silent
         native-comp-deferred-compilation t
         native-comp-async-jobs-number 4))
 
-;; Suppress compiler and bytecomp warnings from displaying
+;; Suppress compiler warnings
 (setq warning-suppress-types '((comp) (bytecomp)))
 
 ;; =============================================================================
 ;; PROCESS OPTIMIZATION
 ;; =============================================================================
 
-;; Increase the amount of data read from processes
 (setq read-process-output-max (* 1024 1024)) ;; 1MB
 
 ;; =============================================================================
 ;; PGTK OPTIMIZATION (Wayland/Pure GTK)
 ;; =============================================================================
 
-;; Reduce pgtk timeout for better performance on Wayland
 (when (featurep 'pgtk)
   (setq pgtk-wait-for-event-timeout 0.001))
 
@@ -125,7 +118,6 @@
 ;; VERSION CONTROL OPTIMIZATION
 ;; =============================================================================
 
-;; Disable version control during startup
 (defvar default-vc-handled-backends vc-handled-backends)
 (setq vc-handled-backends nil)
 
@@ -133,22 +125,16 @@
 ;; MISC STARTUP OPTIMIZATIONS
 ;; =============================================================================
 
-;; Disable site-run-file
 (setq site-run-file nil)
 
-;; Disable bidirectional text rendering for slight performance boost
 (setq-default bidi-display-reordering 'left-to-right
               bidi-paragraph-direction 'left-to-right)
 
-;; Disable warnings and reduce noise
 (setq byte-compile-warnings '(not obsolete)
       warning-suppress-log-types '((comp) (bytecomp))
       native-comp-async-report-warnings-errors 'silent)
 
-;; Faster font rendering
 (setq inhibit-compacting-font-caches t)
-
-;; Disable automatic file handler during startup
 (setq auto-mode-case-fold nil)
 
 ;; =============================================================================
@@ -157,7 +143,7 @@
 
 (add-hook 'emacs-startup-hook
           (lambda ()
-            ;; Restore garbage collection settings (16MB threshold)
+            ;; Restore garbage collection settings
             (setq gc-cons-threshold (* 16 1024 1024)
                   gc-cons-percentage 0.1)
             
@@ -167,17 +153,11 @@
             ;; Restore version control backends
             (setq vc-handled-backends default-vc-handled-backends)
             
-            ;; Garbage collect when losing focus (optional but useful)
+            ;; Garbage collect when losing focus
             (add-function :after after-focus-change-function
                           (lambda ()
                             (unless (frame-focus-state)
-                              (garbage-collect))))
-            
-            ;; ;; Display startup time
-            ;; (message "Emacs loaded in %s with %d garbage collections."
-            ;;          (emacs-init-time "%.2f seconds")
-            ;;          gcs-done)
-	    ))
+                              (garbage-collect))))))
 
 (provide 'early-init)
 
