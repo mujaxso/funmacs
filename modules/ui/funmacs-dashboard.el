@@ -8,9 +8,9 @@
 (use-package dashboard
   :ensure t
   :demand t
+  :after nerd-icons
   :config
   (dashboard-setup-startup-hook)
-  :init
   ;; disable white spaces
   (add-hook 'dashboard-mode-hook (lambda () (setq show-trailing-whitespace nil)))
   ;; show Dashboard in frames created with emacsclient -c
