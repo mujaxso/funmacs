@@ -89,11 +89,11 @@
           ;; Build Systems & Config
           (cmake-mode . cmake-ts-mode)
           (dockerfile-mode . dockerfile-ts-mode)
-          ;;(nix-mode . nix-ts-mode)
+          (nix-mode . nix-ts-mode)
           
           ;; Documentation & Markup
-          ;;(markdown-mode . markdown-ts-mode)
-          ;;(gfm-mode . markdown-ts-mode)
+          (markdown-mode . markdown-ts-mode)
+          (gfm-mode . markdown-ts-mode)
           
           ;; Other
           (sql-mode . sql-ts-mode)))
@@ -241,11 +241,11 @@ If SILENT is non-nil, only show messages when actually installing or on errors."
         ;; Build Systems & Config
         (cmake-mode . cmake-ts-mode)
         (dockerfile-mode . dockerfile-ts-mode)
-        ;;(nix-mode . nix-ts-mode)
+        (nix-mode . nix-ts-mode)
         
         ;; Documentation & Markup
-        ;;(markdown-mode . markdown-ts-mode)
-        ;;(gfm-mode . markdown-ts-mode)
+        (markdown-mode . markdown-ts-mode)
+        (gfm-mode . markdown-ts-mode)
         
         ;; Other
         (sql-mode . sql-ts-mode)))
