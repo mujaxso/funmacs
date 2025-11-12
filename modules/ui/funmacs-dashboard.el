@@ -8,6 +8,7 @@
 (use-package dashboard
   :ensure t
   :demand t
+  :after nerd-icons
   :config
   (dashboard-setup-startup-hook)
   ;; disable white spaces
