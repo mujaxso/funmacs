@@ -99,18 +99,17 @@
    '(aidermacs apheleia async bind-key cape cl-generic cl-lib closql
 	       compat cond-let consult corfu csharp-mode dash
 	       dashboard dictionary doom-modeline edit-indirect
-	       editorconfig eglot eldoc eldoc-box eldoc-mouse
-	       elixir-ts-mode emacsql embark embark-consult erc
-	       exec-path-from-shell external-completion f faceup
-	       flymake forge general ghub git-gutter heex-ts-mode
-	       hl-todo ht idlwave jsonrpc less-css-mode let-alist
-	       ligature llama lsp-mode lsp-tailwindcss lv magit
-	       magit-org-todos magit-prime magit-section magit-todos
-	       map marginalia markdown-mode meow mmm-mode modus-themes
-	       nadvice nerd-icons nerd-icons-completion
-	       nerd-icons-corfu nerd-icons-dired nix-mode ntlm
-	       orderless org org-modern pcre2el peg posframe project
-	       python reformatter s seq shrink-path so-long
+	       editorconfig eglot eldoc eldoc-mouse elixir-ts-mode
+	       emacsql embark embark-consult erc exec-path-from-shell
+	       external-completion f faceup flymake forge general ghub
+	       git-gutter heex-ts-mode hl-todo ht idlwave jsonrpc
+	       less-css-mode let-alist ligature llama lsp-mode
+	       lsp-tailwindcss lv magit magit-org-todos magit-prime
+	       magit-section magit-todos map marginalia markdown-mode
+	       meow mmm-mode modus-themes nadvice nerd-icons
+	       nerd-icons-completion nerd-icons-corfu nerd-icons-dired
+	       ntlm orderless org org-modern pcre2el peg posframe
+	       project python reformatter s seq shrink-path so-long
 	       soap-client spinner ssass-mode svelte-mode svg tempel
 	       tempel-collection track-changes tramp transient treepy
 	       use-package valign verilog-mode vertico vterm
