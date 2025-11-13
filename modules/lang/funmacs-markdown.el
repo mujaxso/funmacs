@@ -1,141 +1,163 @@
-;;; funmacs-markdown.el --- Modern Markdown with same-buffer preview -*- lexical-binding: t; -*-
+;;; funmacs-markdown.el --- Beautiful Markdown editing with preview -*- lexical-binding: t; -*-
 
 ;;; Commentary:
-;; Modern markdown editing with same-buffer preview, clean display, and context-aware symbol visibility.
+;; Modern markdown editing with syntax highlighting, header scaling, and live preview.
+;; Features:
+;; - Beautiful syntax highlighting with scaled headers
+;; - Auto-updating preview in right split window
+;; - Native rendering with shr (basic HTML support)
+;; - Table alignment with valign
+;; - Prettified checkboxes
 
 ;;; Code:
 
+;; Remove markdown-mode remapping to markdown-ts-mode
+(setq major-mode-remap-alist
+      (assoc-delete-all 'markdown-mode major-mode-remap-alist))
+
+;; Markdown mode configuration
 (use-package markdown-mode
   :ensure t
-  :mode (("\\.md\\'" . gfm-mode)
-         ("\\.markdown\\'" . gfm-mode)
-         ("README\\.md\\'" . gfm-mode))
-  :custom
-  ;; Core markdown settings
-  (markdown-command "pandoc -f gfm -t html5")
-  (markdown-fontify-code-blocks-natively t)
-  (markdown-header-scaling t)
-  (markdown-asymmetric-header t)
-  ;; Enable markup hiding by default for clean display
-  (markdown-hide-markup t)
-  (markdown-hide-urls t)
+  :defer nil
+  :demand t
+  :init
+  (setq markdown-fontify-code-blocks-natively t
+        markdown-header-scaling t
+        markdown-header-scaling-values '(1.8 1.5 1.3 1.1 1.0 1.0)
+        markdown-asymmetric-header t
+        markdown-hide-markup nil
+        markdown-hide-urls nil
+        markdown-make-gfm-checkboxes-buttons t
+        markdown-gfm-uppercase-checkbox t)
   :config
-  ;; Enable markup hiding by default in all markdown buffers
-  (add-hook 'markdown-mode-hook #'markdown-toggle-markup-hiding)
+  ;; Clear any markdown-ts-mode associations
+  (setq auto-mode-alist (delete '("\\.md\\'" . markdown-ts-mode) auto-mode-alist))
+  (setq auto-mode-alist (delete '("\\.markdown\\'" . markdown-ts-mode) auto-mode-alist))
+  (setq auto-mode-alist (delete '("README\\.md\\'" . markdown-ts-mode) auto-mode-alist))
   
-  ;; Context-aware symbol visibility - show markup on current line only
-  (defvar-local funmacs--markup-hidden-p nil
-    "Track if markup is currently hidden.")
-  
-  (defun funmacs/markdown-reveal-current-line ()
-    "Temporarily reveal markdown markup on the current line."
-    (when (and markdown-hide-markup (derived-mode-p 'markdown-mode))
-      (let ((inhibit-point-motion-hooks t)
-            (inhibit-modification-hooks t))
-        (remove-text-properties (line-beginning-position) 
-                               (line-end-position)
-                               '(invisible markdown-markup)))))
-  
-  (defun funmacs/markdown-hide-markup-except-current-line ()
-    "Hide markup except on the current line."
-    (when (and markdown-hide-markup (derived-mode-p 'markdown-mode))
-      (save-excursion
-        (save-restriction
-          (widen)
-          (let ((inhibit-point-motion-hooks t)
-                (inhibit-modification-hooks t)
-                (current-line (line-number-at-pos)))
-            (markdown-map-region 
-             (lambda ()
-               (when (/= (line-number-at-pos) current-line)
-                 (markdown-put-text-property (point) (markdown-line-end-position)
-                                            'invisible 'markdown-markup)))
-             (point-min) (point-max)))))))
-  
-  ;; Same-buffer preview using shr (eww rendering engine)
-  (defun funmacs/markdown-preview-same-buffer ()
-    "Render markdown as HTML in the same buffer using shr."
-    (interactive)
-    (unless (executable-find "pandoc")
-      (user-error "pandoc is required for markdown preview"))
-    
-    (let ((original-buffer (current-buffer))
-          (original-point (point))
-          (html-buffer (get-buffer-create "*markdown-preview*")))
-      ;; Convert markdown to HTML
-      (with-current-buffer html-buffer
-        (erase-buffer)
-        (insert (shell-command-to-string 
-                 (format "echo '%s' | pandoc -f gfm -t html5"
-                         (shell-quote-argument 
-                          (buffer-substring-no-properties (point-min) (point-max))))))
-        ;; Render HTML with shr
-        (shr-render-region (point-min) (point-max)))
-      
-      ;; Replace current buffer with preview
-      (let ((inhibit-read-only t))
-        (erase-buffer)
-        (insert-buffer-substring html-buffer)
-        (goto-char original-point)
-        (view-mode 1)
-        (message "Markdown preview - press 'q' to return to editing"))
-      
-      ;; Set up key to return to editing
-      (local-set-key (kbd "q") 
-                     (lambda () 
-                       (interactive)
-                       (view-mode -1)
-                       (erase-buffer)
-                       (insert-buffer-substring original-buffer)
-                       (goto-char original-point)))))
-  
-  ;; Toggle between markup hidden and visible
-  (defun funmacs/markdown-toggle-markup-context ()
-    "Toggle between hiding markup and showing it only on current line."
-    (interactive)
-    (if markdown-hide-markup
-        (progn
-          (markdown-toggle-markup-hiding -1)
-          (remove-hook 'post-command-hook #'funmacs/markdown-reveal-current-line t)
-          (remove-hook 'post-command-hook #'funmacs/markdown-hide-markup-except-current-line t)
-          (message "Markdown markup visible"))
-      (progn
-        (markdown-toggle-markup-hiding 1)
-        (add-hook 'post-command-hook #'funmacs/markdown-reveal-current-line nil t)
-        (add-hook 'post-command-hook #'funmacs/markdown-hide-markup-except-current-line nil t)
-        (message "Markdown markup hidden (context-aware)"))))
+  ;; Add markdown-mode associations
+  (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+  (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
+  (add-to-list 'auto-mode-alist '("README\\.md\\'" . markdown-mode))
   
   ;; Keybindings
-  (define-key markdown-mode-map (kbd "C-c C-p") #'funmacs/markdown-preview-same-buffer)
-  (define-key markdown-mode-map (kbd "C-c C-h") #'funmacs/markdown-toggle-markup-context))
+  (define-key markdown-mode-map (kbd "C-c C-c p") #'funmacs-markdown-toggle-preview)
+  (define-key markdown-mode-map (kbd "C-c C-c h") #'markdown-toggle-markup-hiding)
+  (define-key markdown-mode-map (kbd "C-c C-c i") #'markdown-toggle-inline-images))
 
-;; Setup function for modern markdown editing
-(defun funmacs/markdown-setup ()
-  "Setup markdown with modern features and clean appearance."
-  (setq-local line-spacing 0.1)
-  (visual-line-mode 1)  ; Soft wrapping for document-like feel
-  
-  ;; Enable context-aware markup visibility
-  (when markdown-hide-markup
-    (add-hook 'post-command-hook #'funmacs/markdown-reveal-current-line nil t)
-    (add-hook 'post-command-hook #'funmacs/markdown-hide-markup-except-current-line nil t))
-  
-  ;; Modern appearance settings
-  (setq-local word-wrap t)
-  (setq-local fill-column 80))
+;; Hooks
+(add-hook 'markdown-mode-hook #'visual-line-mode)
+(add-hook 'markdown-mode-hook #'funmacs-markdown-setup)
 
-(add-hook 'markdown-mode-hook #'funmacs/markdown-setup)
-(add-hook 'gfm-mode-hook #'funmacs/markdown-setup)
+;; Setup function
+(defun funmacs-markdown-setup ()
+  "Setup markdown with beautiful highlighting."
+  (setq-local line-spacing 0.2)
+  (setq-local prettify-symbols-alist
+              '(("[ ]" . "☐")
+                ("[x]" . "☑")
+                ("[X]" . "☑")
+                ("[-]" . "◐")))
+  (prettify-symbols-mode 1)
+  (setq-local markdown-hide-markup nil))
 
-;; Clean, modern heading faces for rendered appearance
+;; Force preview window to open on the right side
+(add-to-list 'display-buffer-alist
+             '("\\*Markdown Preview\\*"
+               (display-buffer-in-side-window)
+               (side . right)
+               (window-width . 0.5)))
+
+;; Configure shr renderer
+(setq shr-use-colors t)
+(setq shr-width nil)
+
+;; Preview functionality
+(defvar-local funmacs-markdown-preview-timer nil
+  "Timer for auto-refreshing preview.")
+
+(defun funmacs-markdown-preview-render ()
+  "Render markdown preview using shr."
+  (interactive)
+  (let ((filename buffer-file-name)
+        (preview-buffer "*Markdown Preview*")
+        (scroll-pos (when-let ((win (get-buffer-window "*Markdown Preview*")))
+                      (with-selected-window win (point)))))
+    
+    ;; Generate HTML with pandoc
+    (shell-command-on-region
+     (point-min)
+     (point-max)
+     "pandoc --from=gfm --to=html5 --standalone --quiet"
+     preview-buffer)
+    
+    ;; Display in right window
+    (let ((preview-window (display-buffer preview-buffer)))
+      (with-selected-window preview-window
+        (let ((document (libxml-parse-html-region (point-min) (point-max)))
+              (url (concat "file://" (or filename default-directory))))
+          (let ((inhibit-read-only t))
+            (erase-buffer)
+            (shr-insert-document `(base ((href . ,url)) ,document))
+            (when scroll-pos
+              (goto-char (min scroll-pos (point-max))))
+            (setq buffer-read-only t)))))))
+
+(defun funmacs-markdown-auto-refresh-preview ()
+  "Auto-refresh preview after idle time."
+  (when (and (eq major-mode 'markdown-mode)
+             (get-buffer "*Markdown Preview*"))
+    (when funmacs-markdown-preview-timer
+      (cancel-timer funmacs-markdown-preview-timer))
+    (setq funmacs-markdown-preview-timer
+          (run-with-idle-timer 0.5 nil #'funmacs-markdown-preview-render))))
+
+(defun funmacs-markdown-toggle-preview ()
+  "Toggle markdown preview in right split window."
+  (interactive)
+  (if (get-buffer "*Markdown Preview*")
+      ;; Close preview
+      (progn
+        (when-let ((win (get-buffer-window "*Markdown Preview*")))
+          (delete-window win))
+        (kill-buffer "*Markdown Preview*")
+        (remove-hook 'after-change-functions #'funmacs-markdown-auto-refresh-preview t)
+        (message "Preview closed"))
+    ;; Open preview
+    (funmacs-markdown-preview-render)
+    (add-hook 'after-change-functions
+              (lambda (&rest _) (funmacs-markdown-auto-refresh-preview))
+              nil t)
+    (message "Preview opened - updates automatically")))
+
+;; Table alignment with valign
+(use-package valign
+  :ensure t
+  :hook (markdown-mode . valign-mode)
+  :custom
+  (valign-fancy-bar t))
+
+;; Beautiful syntax highlighting faces
 (custom-set-faces
- '(markdown-header-delimiter-face ((t (:foreground "#616161" :height 0.9))))
+ '(markdown-header-delimiter-face ((t (:foreground "#6e7681" :weight bold))))
  '(markdown-header-face-1 ((t (:height 1.8 :weight extra-bold :foreground "#79c0ff"))))
- '(markdown-header-face-2 ((t (:height 1.4 :weight extra-bold :foreground "#79c0ff"))))
- '(markdown-header-face-3 ((t (:height 1.2 :weight extra-bold :foreground "#79c0ff"))))
- '(markdown-header-face-4 ((t (:height 1.15 :weight bold :foreground "#79c0ff"))))
- '(markdown-header-face-5 ((t (:height 1.1 :weight bold :foreground "#79c0ff"))))
- '(markdown-header-face-6 ((t (:height 1.05 :weight semi-bold :foreground "#79c0ff")))))
+ '(markdown-header-face-2 ((t (:height 1.5 :weight extra-bold :foreground "#79c0ff"))))
+ '(markdown-header-face-3 ((t (:height 1.3 :weight bold :foreground "#8ab4f8"))))
+ '(markdown-header-face-4 ((t (:height 1.2 :weight bold :foreground "#8ab4f8"))))
+ '(markdown-header-face-5 ((t (:height 1.1 :weight semi-bold :foreground "#9ecbff"))))
+ '(markdown-header-face-6 ((t (:height 1.05 :weight semi-bold :foreground "#9ecbff"))))
+ '(markdown-code-face ((t (:background "#161b22" :foreground "#f0883e"))))
+ '(markdown-inline-code-face ((t (:background "#30363d" :foreground "#f0883e"))))
+ '(markdown-pre-face ((t (:background "#161b22" :foreground "#c9d1d9"))))
+ '(markdown-link-face ((t (:foreground "#58a6ff" :weight bold))))
+ '(markdown-url-face ((t (:foreground "#a5d6ff" :underline t))))
+ '(markdown-html-tag-face ((t (:foreground "#7ee787"))))
+ '(markdown-html-attr-name-face ((t (:foreground "#79c0ff"))))
+ '(markdown-html-attr-value-face ((t (:foreground "#a5d6ff"))))
+ '(markdown-list-face ((t (:foreground "#79c0ff" :weight bold))))
+ '(markdown-blockquote-face ((t (:foreground "#8b949e" :slant italic))))
+ '(markdown-bold-face ((t (:weight extra-bold :foreground "#c9d1d9"))))
+ '(markdown-italic-face ((t (:slant italic :foreground "#c9d1d9")))))
 
 (provide 'funmacs-markdown)
 ;;; funmacs-markdown.el ends here
