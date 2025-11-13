@@ -30,7 +30,6 @@
 (add-to-list 'load-path (expand-file-name "ui" funmacs-modules-dir))
 (require 'funmacs-nerd-icons)
 (require 'funmacs-dashboard)
-;; Load modeline last to ensure all dependencies are available
 (require 'funmacs-modeline)
 (require 'funmacs-ligature)
 
@@ -102,18 +101,20 @@
 	       editorconfig eglot eldoc eldoc-mouse elixir-ts-mode
 	       emacsql embark embark-consult erc exec-path-from-shell
 	       external-completion f faceup flymake forge general ghub
-	       git-gutter heex-ts-mode hl-todo ht idlwave jsonrpc
-	       less-css-mode let-alist ligature llama lsp-mode
-	       lsp-tailwindcss lv magit magit-org-todos magit-prime
-	       magit-section magit-todos map marginalia markdown-mode
-	       meow mmm-mode modus-themes nadvice nerd-icons
-	       nerd-icons-completion nerd-icons-corfu nerd-icons-dired
-	       nix-ts-mode ntlm orderless org org-modern pcre2el peg
-	       posframe project python reformatter s seq shrink-path
-	       so-long soap-client spinner ssass-mode svelte-mode svg
-	       tempel tempel-collection track-changes tramp transient
-	       treepy use-package valign verilog-mode vertico vterm
-	       vterm-toggle vue-html-mode vue-mode vundo wallpaper
+	       git-gutter grip-mode heex-ts-mode hl-todo ht htmlize
+	       idlwave impatient-mode jsonrpc less-css-mode let-alist
+	       ligature llama lsp-mode lsp-tailwindcss lv magit
+	       magit-org-todos magit-prime magit-section magit-todos
+	       map marginalia markdown-mode markdown-preview-eww
+	       markdown-ts-mode meow mmm-mode modus-themes nadvice
+	       nerd-icons nerd-icons-completion nerd-icons-corfu
+	       nerd-icons-dired nix-ts-mode ntlm orderless org
+	       org-modern pcre2el peg posframe project python
+	       reformatter s seq shrink-path simple-httpd so-long
+	       soap-client spinner ssass-mode svelte-mode svg tempel
+	       tempel-collection track-changes tramp transient treepy
+	       use-package valign verilog-mode vertico vterm
+	       vterm-toggle vue-html-mode vue-mode vundo w3m wallpaper
 	       which-key window-tool-bar with-editor xref yaml
 	       zig-mode)))
 (custom-set-faces

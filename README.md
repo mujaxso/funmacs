@@ -16,6 +16,7 @@
 </div>
 
 ### Supported Languages
+
 <div align="center">
   <img src="https://img.shields.io/badge/C-%2300599C.svg?style=for-the-badge&logo=c&logoColor=white" alt="C">
   <img src="https://img.shields.io/badge/C++-%2300599C.svg?style=for-the-badge&logo=c%2B%2B&logoColor=white" alt="C++">
@@ -37,8 +38,8 @@
 
 **Skip the configuration rabbit hole.** Funmacs is a production-ready Emacs setup with modern tooling baked in—LSP integration using eglot, tree-sitter parsing, and a refined completion experience. Its modular core/ and modules/ architecture means you can extend or strip down features without breaking anything.
 
-> **Funmacs** is a **modern, production-ready Emacs configuration** built for developers who want a powerful yet elegant experience — **no yak-shaving required.**  
->  
+> **Funmacs** is a **modern, production-ready Emacs configuration** built for developers who want a powerful yet elegant experience — **no yak-shaving required.**
+>
 > It's built around a modular architecture, integrates **LSP**, **Tree-sitter**, **Corfu-based completion**, and features **modal editing with Meow**. The configuration includes **persistent hover documentation** that stays visible until you move away, and delivers a polished UX that just works out of the box.
 
 ---
@@ -49,34 +50,34 @@
 
 ## 📑 Table of Contents
 
-1. [✨ Highlights](#-highlights)  
-2. [🎨 UI & Aesthetics](#-ui--aesthetics)  
-3. [⚡ Editing Experience](#-editing-experience)  
-4. [🧠 Completion System](#-completion-system)  
-5. [🛠 Development Features](#-development-features)  
-6. [🌍 Supported Languages](#-supported-languages)  
-    - [C / C++](#c--c)  
-    - [Python](#python)  
-    - [Rust](#rust)  
-    - [Go](#go)  
-    - [Zig](#zig)  
-    - [JavaScript & TypeScript](#javascript--typescript)  
-    - [Web Development](#web-development)  
-    - [Configuration & Markup](#configuration--markup)  
-    - [Markdown](#markdown)  
-7. [🚀 Installation](#-installation)  
-8. [💖 Support](#-support)  
-9. [🔗 Related Projects](#-related-projects)  
+1. [✨ Highlights](#-highlights)
+2. [🎨 UI & Aesthetics](#-ui--aesthetics)
+3. [⚡ Editing Experience](#-editing-experience)
+4. [🧠 Completion System](#-completion-system)
+5. [🛠 Development Features](#-development-features)
+6. [🌍 Supported Languages](#-supported-languages)
+   - [C / C++](#c--c)
+   - [Python](#python)
+   - [Rust](#rust)
+   - [Go](#go)
+   - [Zig](#zig)
+   - [JavaScript & TypeScript](#javascript--typescript)
+   - [Web Development](#web-development)
+   - [Configuration & Markup](#configuration--markup)
+   - [Markdown](#markdown)
+7. [🚀 Installation](#-installation)
+8. [💖 Support](#-support)
+9. [🔗 Related Projects](#-related-projects)
 10. [⚖️ License](#%EF%B8%8F-license)
 
 ---
 
 ## ✨ Highlights
 
-- 🚀 **Zero Setup** — Start coding instantly with pre-configured defaults.  
-- 🧩 **Modular Design** — Enable or disable features with minimal effort.  
-- ⚙️ **Modern Toolchain** — Tree-sitter, Eglot, and Corfu baked in.  
-- 🎯 **Optimized for Productivity** — Smart defaults and minimal distractions.  
+- 🚀 **Zero Setup** — Start coding instantly with pre-configured defaults.
+- 🧩 **Modular Design** — Enable or disable features with minimal effort.
+- ⚙️ **Modern Toolchain** — Tree-sitter, Eglot, and Corfu baked in.
+- 🎯 **Optimized for Productivity** — Smart defaults and minimal distractions.
 - 🧘 **Clean Aesthetic** — A distraction-free, beautiful interface.
 - 🖱️ **Smart Documentation** — Persistent hover docs that stay until you move away
 - ⌨️ **Modal Editing** — Meow keybindings for efficient text manipulation
@@ -86,20 +87,20 @@
 
 ## 🎨 UI & Aesthetics
 
-- 🪄 Minimal interface — no unnecessary menu/tool bars.  
-- ⚡ **Doom modeline** for rich status info with Nerd Font icons.  
-- 💡 **Which-key** integration to guide you through keybindings.  
-- 🎨 **Custom themes** for both light and dark modes.  
+- 🪄 Minimal interface — no unnecessary menu/tool bars.
+- ⚡ **Doom modeline** for rich status info with Nerd Font icons.
+- 💡 **Which-key** integration to guide you through keybindings.
+- 🎨 **Custom themes** for both light and dark modes.
 - 🧘 Clean typography and layout for long coding sessions.
 
 ---
 
 ## ⚡ Editing Experience
 
-- ✨ Automatic tag closing in markup and HTML modes.  
-- 🔢 Relative line numbers for easier navigation.  
-- 🧭 **Vundo** — tree-structured undo/redo history.  
-- 🔇 Bell sound disabled (no more beeps!).  
+- ✨ Automatic tag closing in markup and HTML modes.
+- 🔢 Relative line numbers for easier navigation.
+- 🧭 **Vundo** — tree-structured undo/redo history.
+- 🔇 Bell sound disabled (no more beeps!).
 - 💨 Smooth scrolling and consistent indentation defaults.
 - 🖱️ **Smart Hover Documentation** — Eldoc popups stay visible until mouse moves away
 - ⌨️ **Modal Editing** — Meow keybindings with leader key (SPC) support
@@ -110,29 +111,29 @@
 
 ## 🧠 Completion System
 
-| Component | Description |
-|------------|--------------|
-| **Vertico** | Lightweight and fast minibuffer completion UI. |
-| **Orderless** | Fuzzy, flexible, and intuitive matching style. |
-| **Corfu** | Pop-up completion menu for inline suggestions. |
-| **Embark** | Contextual actions for completion items. |
-| **Cape** | Adds additional completion sources (symbols, files, etc.). |
-| **Consult** | Enhanced search and navigation commands. |
-| **Marginalia** | Rich annotations for completion candidates. |
-| **Nerd Icons** | Beautiful icons throughout the completion UI. |
-| **Tempel** | Lightweight template/snippet system. |
+| Component      | Description                                                |
+| -------------- | ---------------------------------------------------------- |
+| **Vertico**    | Lightweight and fast minibuffer completion UI.             |
+| **Orderless**  | Fuzzy, flexible, and intuitive matching style.             |
+| **Corfu**      | Pop-up completion menu for inline suggestions.             |
+| **Embark**     | Contextual actions for completion items.                   |
+| **Cape**       | Adds additional completion sources (symbols, files, etc.). |
+| **Consult**    | Enhanced search and navigation commands.                   |
+| **Marginalia** | Rich annotations for completion candidates.                |
+| **Nerd Icons** | Beautiful icons throughout the completion UI.              |
+| **Tempel**     | Lightweight template/snippet system.                       |
 
-> 🧩 *The result is a refined, modern completion experience that rivals VS Code or JetBrains IDEs—without leaving Emacs.*
+> 🧩 _The result is a refined, modern completion experience that rivals VS Code or JetBrains IDEs—without leaving Emacs._
 
 ---
 
 ## 🛠 Development Features
 
-- 🧰 **Eglot (LSP)** – Language Server Protocol integration for code intelligence.  
-- 🌳 **Tree-sitter** – Modern syntax highlighting and structural parsing.  
-- ⚙️ **Automatic grammar installation** for supported languages.  
-- ✨ **Apheleia** – Asynchronous and fast code formatting.  
-- 📦 **Template System** – Tempel snippets for rapid code generation.  
+- 🧰 **Eglot (LSP)** – Language Server Protocol integration for code intelligence.
+- 🌳 **Tree-sitter** – Modern syntax highlighting and structural parsing.
+- ⚙️ **Automatic grammar installation** for supported languages.
+- ✨ **Apheleia** – Asynchronous and fast code formatting.
+- 📦 **Template System** – Tempel snippets for rapid code generation.
 - 🧠 Intelligent indentation and syntax-aware editing.
 - 🖱️ **Smart Documentation** – Persistent hover popups with custom mouse tracking
 - 🎯 **AI Pair Programming** – Aider integration for AI-assisted development
@@ -148,62 +149,62 @@ Each language module includes LSP integration, formatting, syntax highlighting, 
 
 ### 🧱 C / C++
 
-- LSP via `clangd` for autocompletion, diagnostics, and symbol navigation.  
-- Tree-sitter highlighting for precise syntax awareness.  
-- On-save formatting with `clang-format`.  
+- LSP via `clangd` for autocompletion, diagnostics, and symbol navigation.
+- Tree-sitter highlighting for precise syntax awareness.
+- On-save formatting with `clang-format`.
 - Ready for CMake-based and Makefile projects.
 
 ### 🐍 Python
 
-- LSP powered by `pyright` or `pylsp`.  
-- Built-in support for virtual environments.  
-- Automatic formatting with **Black** or **YAPF**.  
+- LSP powered by `pyright` or `pylsp`.
+- Built-in support for virtual environments.
+- Automatic formatting with **Black** or **YAPF**.
 - REPL integration and code navigation included.
 
 ### 🦀 Rust
 
-- Uses `rust-analyzer` for advanced IDE features.  
-- Inline diagnostics and code actions.  
-- Built-in formatter (`rustfmt`) and cargo command shortcuts.  
+- Uses `rust-analyzer` for advanced IDE features.
+- Inline diagnostics and code actions.
+- Built-in formatter (`rustfmt`) and cargo command shortcuts.
 - Tree-sitter for rich syntax highlighting.
 
 ### 🐹 Go
 
-- LSP with `gopls` and on-save formatting.  
-- Auto-imports and completion for packages.  
-- Integrated testing workflow via `go test`.  
+- LSP with `gopls` and on-save formatting.
+- Auto-imports and completion for packages.
+- Integrated testing workflow via `go test`.
 
 ### ⚡ Zig
 
-- LSP via `zls` (Zig Language Server).  
-- Tree-sitter grammar for Zig syntax highlighting.  
-- Integrated build and run commands for quick iteration.  
-- Formatter support using `zig fmt`.  
-- Autocompletion for symbols, imports, and built-ins.  
+- LSP via `zls` (Zig Language Server).
+- Tree-sitter grammar for Zig syntax highlighting.
+- Integrated build and run commands for quick iteration.
+- Formatter support using `zig fmt`.
+- Autocompletion for symbols, imports, and built-ins.
 
 ### ⚡ JavaScript & TypeScript
 
-- LSP via `typescript-language-server`.  
-- Tree-sitter-based highlighting for JS/TS/JSX/TSX.  
-- Support for ESLint and Prettier formatting.  
+- LSP via `typescript-language-server`.
+- Tree-sitter-based highlighting for JS/TS/JSX/TSX.
+- Support for ESLint and Prettier formatting.
 - Module snippets for **React**, **Vue**, and **Svelte** frameworks.
 
 ### 🌐 Web Development
 
-- First-class HTML and CSS support.  
-- Autoclosing tags, attribute completion, and live linting.  
+- First-class HTML and CSS support.
+- Autoclosing tags, attribute completion, and live linting.
 - Framework-specific modules for React, Vue, Svelte, TailwindCSS.
 
 ### ⚙️ Configuration & Markup
 
-- Syntax highlighting for **JSON**, **YAML**, **Nix**, and more.  
-- Tree-sitter parsing ensures accurate indentation and folding.  
+- Syntax highlighting for **JSON**, **YAML**, **Nix**, and more.
+- Tree-sitter parsing ensures accurate indentation and folding.
 - LSP and schema validation for configuration files.
 
 ### 📝 Markdown
 
-- `markdown-mode` for writing and syntax highlighting.  
-- `markdown-preview-mode` for real-time preview in another buffer.  
+- `markdown-mode` for writing and syntax highlighting.
+- `markdown-preview-mode` for real-time preview in another buffer.
 - Perfect for documentation, notes, and technical writing.
 
 ---
@@ -220,6 +221,7 @@ git clone https://github.com/mujaxso/funmacs.git ~/.config/emacs
 ### First-Time Setup
 
 Funmacs will automatically:
+
 - Install all required packages
 - Set up tree-sitter grammars for supported languages
 - Configure LSP servers via Eglot
@@ -248,7 +250,7 @@ Your support helps keep Funmacs maintained, updated, and evolving.
 
 ## 🔗 Related Projects
 
-- [**NEOTE**](https://github.com/mujaxso/neote) – Lightweight next-gen text editor.  
+- [**NEOTE**](https://github.com/mujaxso/neote) – Lightweight next-gen text editor.
 - [**MujaOS**](https://github.com/mujaxso/mujaos) – Modern and secure operating system.
 
 ---
@@ -263,4 +265,3 @@ See [LICENSE](https://github.com/mujaxso/funmacs/blob/main/LICENSE) for full det
 > 🧩 **FOSS:** [foss.land](https://www.foss.land) &nbsp;•&nbsp;  
 > 💻 **GitHub:** [@mujaxso](https://github.com/mujaxso) &nbsp;•&nbsp;  
 > 🐦 **Twitter/X:** [@mujaxso](https://twitter.com/mujaxso)
-
